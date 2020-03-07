@@ -1,0 +1,18 @@
+Package: ggstar
+Title: star layer for ggplot2
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Shuangbin",
+           family = "Xu",
+           role = c("aut", "cre"),
+           email = "xshuangbin@163.com")
+Description: What the package does (one paragraph).
+Depends: 
+  R (>= 3.5)
+Imports:
+  grid,
+  ggplot2  
+License: Artistic-2.0
+Encoding: UTF-8
+LazyData: false
+RoxygenNote: 7.0.2 
