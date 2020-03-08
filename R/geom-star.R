@@ -9,9 +9,8 @@
 #' @export
 #' @examples
 #' library(ggplot2)
-#' p <- ggplot(mtcars, aes(wt, mpg)) + 
-#'      geom_star(aes(colour=factor(cyl),
-#'                    fill=factor(factor(cyl))))
+#' p <- ggplot(mtcars, aes(wt, mpg, fill=cyl)) + 
+#'      geom_star(size=3)
 #' p
 geom_star <- function(mapping = NULL, 
                       data= NULL, 
@@ -46,7 +45,7 @@ starGrob <- function(fill=NULL,col=NULL,alpha=NULL, vp=NULL, name=NULL){
 GeomStar <- ggproto("GeomStar", 
                     Geom, 
 		    required_aes = c("x", "y"),
-		    default_aes = aes(size = 2, fill = "black", angle=180, colour = NA, alpha = 1),
+		    default_aes = aes(size = 3.5, fill = "black", angle=180, colour = NA, alpha = 1),
                     draw_key = draw_key_polygon,
                     draw_panel=function(data, panel_scales, coord){
                         coords <- coord$transform(data, panel_scales)
