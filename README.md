@@ -29,7 +29,7 @@ p <- ggplot(data=mtcars,
 p
 ```
 
-![](./inst/extdata/figure1.png)
+![](https://github.com/xiangpin/ggstar/blob/master/inst/extdata/figure1.png)
 
 ``` r
 p2 <- ggplot(data=iris, 
@@ -40,4 +40,4 @@ p2 <- ggplot(data=iris,
 p2
 ```
 
-![](./inst/extdata/figure2.png)
+![](https://github.com/xiangpin/ggstar/blob/master/inst/extdata/figure2.png)
