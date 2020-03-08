@@ -54,9 +54,8 @@ Star layer
 }
 \examples{
 library(ggplot2)
-p <- ggplot(mtcars, aes(wt, mpg)) + 
-     geom_star(aes(colour=factor(cyl),
-                   fill=factor(factor(cyl))))
+p <- ggplot(mtcars, aes(wt, mpg, fill=cyl)) + 
+     geom_star(size=3)
 p
 }
 \author{
