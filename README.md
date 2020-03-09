@@ -13,7 +13,7 @@ School of Basic Medical Sciences, Southern Medical University
 ``` r
 if (!requireNamespace("devtools", quietly=TRUE))
     install.packages("devtools")
-devtools::install_github("xiangpin/MicrobiotaProcess")
+devtools::install_github("xiangpin/ggstar")
 ```
 
 # :beginner: Usage
@@ -29,7 +29,7 @@ p <- ggplot(data=mtcars,
 p
 ```
 
-![](https://github.com/xiangpin/ggstar/blob/master/inst/extdata/figure1.png)
+![](./inst/extdata/figure1.png)
 
 ``` r
 p2 <- ggplot(data=iris, 
@@ -40,4 +40,4 @@ p2 <- ggplot(data=iris,
 p2
 ```
 
-![](https://github.com/xiangpin/ggstar/blob/master/inst/extdata/figure2.png)
+![](./inst/extdata/figure2.png)
