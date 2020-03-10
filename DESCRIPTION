@@ -12,7 +12,8 @@ Depends:
 Imports:
   grid,
   ggplot2,
-  scales
+  scales,
+  gridExtra
 License: Artistic-2.0
 Encoding: UTF-8
 LazyData: false
