@@ -55,8 +55,10 @@ Star layer
 }
 \examples{
 library(ggplot2)
-p <- ggplot(mtcars, aes(wt, mpg, fill=cyl)) + 
-     geom_star(size=3)
+p <- ggplot(iris, aes(x=Sepal.Length, 
+                      y=Sepal.Width, 
+                      color=Species)) + 
+     geom_star(size=4)
 p
 }
 \author{

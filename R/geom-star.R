@@ -9,8 +9,10 @@
 #' @export
 #' @examples
 #' library(ggplot2)
-#' p <- ggplot(mtcars, aes(wt, mpg, fill=cyl)) + 
-#'      geom_star(size=3)
+#' p <- ggplot(iris, aes(x=Sepal.Length, 
+#'                       y=Sepal.Width, 
+#'                       color=Species)) + 
+#'      geom_star(size=4)
 #' p
 geom_star <- function(mapping = NULL, 
                       data= NULL, 
@@ -29,81 +31,43 @@ geom_star <- function(mapping = NULL,
 }
 
 #' @importFrom grid polygonGrob gpar
-starGrob <- function(fill=NULL,col=NULL,alpha=NULL, vp=NULL, name=NULL){
-    # the polar coordinate angle
-    t = 0
-    # the radius
-    r = 0.5
-    # the sides of polygons
-    n = 5
-    starcoord = polygens(t = t, n = n, r = r)
-    x = starcoord$x
-    y = starcoord$y
-    # for star, if not the shape will be regular polygons
-    x = x[c(1,3,5,2,4)]
-    y = y[c(1,3,5,2,4)]
-    polygonGrob(x, y,
-                gp=gpar(fill=fill,
-                        col=col,
-                        alpha=alpha),
-                vp=vp,
-                name=name)
-}
-
-#' Key drawing functions 
-#'
-#' Each Geom has an associated function that draws the key when the geom needs
-#' to be displayed in a legend. These are the options built into ggplot2.
-#'
-#' @param data A single row data frame containing the scaled aesthetics to
-#'      display in this key
-#' @param params A list of additional parameters supplied to the geom.
-#' @param size Width and height of key in mm.
-#' @return A grid grob.
-#' @rdname draw_key
-#' @name draw_key
-#' @keywords internal
-#' @author Shuangbin Xu
-#' @export
-#' @importFrom scales alpha
-#' @importFrom grid polygonGrob gpar
-draw_key_star <- function(data, params, size){
-    starcoord = polygens(t = 0, n = 5, r = 0.3)
-    x = starcoord$x[c(1, 3, 5, 2, 4)]
-    y = starcoord$y[c(1, 3, 5, 2, 4)]
-    polygonGrob(x = x,
-                y = y,
-                gp=gpar(fill=alpha(data$fill, data$alpha),
-                        col=alpha(data$colour, data$alpha)))
+starGrob <- function(size=NULL, fill=NULL, col=NULL, alpha=NULL, vp=NULL, name=NULL){
+    stargrid(x = 0.5, 
+             y = 0.5, 
+             size = size,
+             gp=gpar(fill = fill,
+                     col = col,
+                     alpha = alpha),
+             vp = vp,
+             name = name)
 }
 
 #' @importFrom ggplot2 aes ggproto Geom
 #' @importFrom grid viewport gTree
 GeomStar <- ggproto("GeomStar", 
                     Geom, 
-		    required_aes = c("x", "y"),
-		    default_aes = aes(size = 3.5, fill = "black", angle=90, colour = NA, alpha = 1),
+                    required_aes = c("x", "y"),
+                    default_aes = aes(size = 4.5, fill = "black", angle=0, colour = NA, alpha = 1),
                     draw_key = draw_key_star,
                     draw_panel=function(data, panel_scales, coord){
                         coords <- coord$transform(data, panel_scales)
-                        coords$size <- coords$size/100
+                        coords$size <- (coords$size *.pt )/10
                         grobs <- lapply(seq_len(nrow(coords)), function(i){
                             vp <- viewport(x=coords$x[i], y=coords$y[i],
-                                           width=coords$size[i], height=coords$size[i],
+                                           width=coords$size[i], 
+                                           height=coords$size[i],
                                            angle = data$angle[i],
                                            just = c("center", "center"),
                                            default.units = "native")
                             starGrob(fill = coords$fill[i],
                                      col = coords$colour[i],
                                      alpha = coords$alpha[i],
+                                     size = coords$size[i],
                                      vp = vp, 
                                      name = i)
                         })
                     class(grobs) <- "gList"
-                    ggname("geom_star",gTree(children = grobs))
+                    ggname("geom_star", gTree(children = grobs))
                     }
             )
 
-#' @importFrom utils getFromNamespace
-#' @keywords internal
-ggname <- getFromNamespace("ggname", "ggplot2")
