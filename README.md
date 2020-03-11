@@ -29,8 +29,6 @@ p <- ggplot(data=mtcars,
 p
 ```
 
-![](README_files/figure-gfm/mtcars-1.svg)<!-- -->
-
 ![](./inst/extdata/figure1.png)
 
 ``` r
@@ -41,8 +39,6 @@ p2 <- ggplot(data=iris,
      geom_star()
 p2
 ```
-
-![](README_files/figure-gfm/iris-1.svg)<!-- -->
 
 ![](./inst/extdata/figure2.png)
 

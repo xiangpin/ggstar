@@ -25,7 +25,7 @@ devtools::install_github("xiangpin/ggstar")
 
 # :beginner: Usage
 
-```{r, fig.width=4, fig.height=3.8, mtcars}
+```r
 library(ggplot2)
 library(ggstar)
 p <- ggplot(data=mtcars, 
@@ -38,7 +38,7 @@ p
 
 ![](./inst/extdata/figure1.png)
 
-```{r, fig.width=5, fig.height=3, iris}
+```r
 p2 <- ggplot(data=iris, 
              mapping=aes(x=Sepal.Length, 
                          y=Sepal.Width, 
