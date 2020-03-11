@@ -25,7 +25,7 @@ devtools::install_github("xiangpin/ggstar")
 
 # :beginner: Usage
 
-```{r, fig.width=6, fig.height=6, mtcars}
+```{r, fig.width=4, fig.height=3.8, mtcars}
 library(ggplot2)
 library(ggstar)
 p <- ggplot(data=mtcars, 
@@ -38,7 +38,7 @@ p
 
 ![](./inst/extdata/figure1.png)
 
-```{r, fig.width=6, fig.height=3, iris}
+```{r, fig.width=5, fig.height=3, iris}
 p2 <- ggplot(data=iris, 
              mapping=aes(x=Sepal.Length, 
                          y=Sepal.Width, 
@@ -48,3 +48,14 @@ p2
 ```
 
 ![](./inst/extdata/figure2.png)
+
+```{r, fig.width=5, fig.height=3, iris_shape}
+p3 <- ggplot(data=iris,
+             mapping=aes(x=Sepal.Length,
+                         y=Sepal.Width,
+                         fill=Species,
+                         starshape=Species)) +
+      geom_star() + scale_starshape_manual(values=c(1, 2, 9))
+p3
+```
+

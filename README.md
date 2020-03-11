@@ -45,3 +45,15 @@ p2
 ![](README_files/figure-gfm/iris-1.svg)<!-- -->
 
 ![](./inst/extdata/figure2.png)
+
+``` r
+p3 <- ggplot(data=iris,
+             mapping=aes(x=Sepal.Length,
+                         y=Sepal.Width,
+                         fill=Species,
+                         starshape=Species)) +
+      geom_star() + scale_starshape_manual(values=c(1, 2, 9))
+p3
+```
+
+![](README_files/figure-gfm/iris_shape-1.svg)<!-- -->
