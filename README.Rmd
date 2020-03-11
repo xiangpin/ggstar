@@ -49,7 +49,7 @@ p2
 
 ![](./inst/extdata/figure2.png)
 
-```{r, fig.width=5, fig.height=3, iris_shape}
+```r
 p3 <- ggplot(data=iris,
              mapping=aes(x=Sepal.Length,
                          y=Sepal.Width,
@@ -59,3 +59,4 @@ p3 <- ggplot(data=iris,
 p3
 ```
 
+![](./inst/extdata/figure3.png)

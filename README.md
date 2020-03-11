@@ -56,4 +56,4 @@ p3 <- ggplot(data=iris,
 p3
 ```
 
-![](README_files/figure-gfm/iris_shape-1.svg)<!-- -->
+![](./inst/extdata/figure3.png)
