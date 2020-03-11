@@ -31,15 +31,21 @@ geom_star <- function(mapping = NULL,
 }
 
 #' @importFrom grid polygonGrob gpar
-starGrob <- function(size=NULL, fill=NULL, col=NULL, alpha=NULL, vp=NULL, name=NULL){
-    stargrid(x = 0.5, 
-             y = 0.5, 
-             size = size,
-             gp=gpar(fill = fill,
-                     col = col,
-                     alpha = alpha),
-             vp = vp,
-             name = name)
+starGrob <- function(starshape=NULL, size=NULL, angle=NULL, fill=NULL, 
+                     col=NULL, alpha=NULL, ar=NULL, 
+                     phase=NULL, vp=NULL, name=NULL){
+    grid.star(x = 0.5, 
+              y = 0.5, 
+              starshape = starshape,
+              size = size,
+              angle = angle,
+              ar = ar,
+              phase = phase,
+              gp=gpar(fill = fill,
+                      col = col,
+                      alpha = alpha),
+              vp = vp,
+              name = name)
 }
 
 #' @importFrom ggplot2 aes ggproto Geom
@@ -47,22 +53,31 @@ starGrob <- function(size=NULL, fill=NULL, col=NULL, alpha=NULL, vp=NULL, name=N
 GeomStar <- ggproto("GeomStar", 
                     Geom, 
                     required_aes = c("x", "y"),
-                    default_aes = aes(size = 4.5, fill = "black", angle=0, colour = NA, alpha = 1),
+                    non_missing_aes = c("size", "starshape", "fill"),
+                    default_aes = aes(size = 4.5, fill = "black", starshape=1, 
+                                      angle=0, colour = NA, alpha = 1, ar=1, 
+                                      phase=0),
                     draw_key = draw_key_star,
-                    draw_panel=function(data, panel_scales, coord){
-                        coords <- coord$transform(data, panel_scales)
+                    draw_panel=function(data, panel_params, coord){
+                        if (!is.numeric(data$starshape)){
+                            data$starshape <- translate_starshape(data$starshape)
+                        }
+                        coords <- coord$transform(data, panel_params)
                         coords$size <- (coords$size *.pt )/10
                         grobs <- lapply(seq_len(nrow(coords)), function(i){
                             vp <- viewport(x=coords$x[i], y=coords$y[i],
                                            width=coords$size[i], 
                                            height=coords$size[i],
-                                           angle = data$angle[i],
                                            just = c("center", "center"),
                                            default.units = "native")
                             starGrob(fill = coords$fill[i],
                                      col = coords$colour[i],
                                      alpha = coords$alpha[i],
                                      size = coords$size[i],
+                                     starshape = coords$starshape[i],
+                                     angle = coords$angle[i],
+                                     ar = coords$ar[i],
+                                     phase = coords$phase[i],
                                      vp = vp, 
                                      name = i)
                         })
@@ -71,3 +86,64 @@ GeomStar <- ggproto("GeomStar",
                     }
             )
 
+translate_starshape <- function(starshape){
+    if (is.factor(starshape)){
+        starshape <- as.numeric(starshape)
+    }
+    if (is.character(starshape)){
+        starshape <- translate_starshape_string(starshape)
+    }
+    return(starshape)
+}
+
+# reference ggplot2
+translate_starshape_string <- function(starshape_string){
+    starshape_table <- c(
+                     "pentagram" = 1,
+                     "magen david" = 2,
+                     "seven pointed star" = 3,
+                     "anise star" = 4,
+                     "regular pentagon" = 5,
+                     "hexagon" = 6,
+                     "regular heptagon" = 7,
+                     "regular octagon" = 8,
+                     "anise star2" = 9,
+                     "anise star3" = 10)
+
+    shape_match <- charmatch(starshape_string, names(starshape_table))
+    invalid_strings <- is.na(shape_match)
+    nonunique_strings <- shape_match == 1
+
+    if (any(invalid_strings)) {
+        bad_string <- unique(starshape_string[invalid_strings])
+        n_bad <- length(bad_string)
+
+        collapsed_names <- sprintf("\n* '%s'", bad_string[1:min(5, n_bad)])
+        more_problems <- if (n_bad > 5) {
+            sprintf("\n* ... and %d more problem%s", n_bad - 5, ifelse(n_bad > 6, "s", ""))
+        }
+        stop("Can't find shape name:", collapsed_names,
+             more_problems, call. = FALSE)
+    }
+    if (any(nonunique_strings)) {
+        bad_string <- unique(starshape_string[nonunique_strings])
+        n_bad <- length(bad_string)
+        
+        n_matches <- vapply(
+	     bad_string[1:min(5, n_bad)],
+	     function(starshape_string) sum(grepl(paste0("^", starshape_string), names(starshape_table))),
+	     integer(1))
+
+        collapsed_names <- sprintf("\n* '%s' partially matches %d shape names",
+				   bad_string[1:min(5, n_bad)], n_matches)
+
+        more_problems <- if (n_bad > 5) {sprintf("\n* ... and %d more problem%s", 
+                                                n_bad - 5, ifelse(n_bad > 6, "s", ""))}
+
+	stop("Shape names must be unambiguous:",
+             collapsed_names,
+             more_problems,
+             call. = FALSE)
+    }
+    unname(starshape_table[shape_match])
+}
