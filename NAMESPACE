@@ -2,7 +2,11 @@
 
 export(draw_key_star)
 export(geom_star)
+export(scale_starshape)
+export(scale_starshape_continuous)
+export(scale_starshape_discrete)
 export(scale_starshape_manual)
+export(scale_starshape_ordinal)
 importFrom(ggplot2,Geom)
 importFrom(ggplot2,aes)
 importFrom(ggplot2,discrete_scale)
