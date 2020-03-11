@@ -110,19 +110,19 @@ translate_starshape_string <- function(starshape_string){
                      "anise star2" = 9,
                      "anise star3" = 10)
 
-    shape_match <- charmatch(starshape_string, names(starshape_table))
-    invalid_strings <- is.na(shape_match)
-    nonunique_strings <- shape_match == 1
+    starshape_match <- charmatch(starshape_string, names(starshape_table))
+    invalid_strings <- is.na(starshape_match)
+    nonunique_strings <- starshape_match == 1
 
     if (any(invalid_strings)) {
         bad_string <- unique(starshape_string[invalid_strings])
         n_bad <- length(bad_string)
 
-        collapsed_names <- sprintf("\n* '%s'", bad_string[1:min(5, n_bad)])
-        more_problems <- if (n_bad > 5) {
-            sprintf("\n* ... and %d more problem%s", n_bad - 5, ifelse(n_bad > 6, "s", ""))
+        collapsed_names <- sprintf("\n* '%s'", bad_string[1:min(9, n_bad)])
+        more_problems <- if (n_bad > 9) {
+            sprintf("\n* ... and %d more problem%s", n_bad - 9, ifelse(n_bad > 10, "s", ""))
         }
-        stop("Can't find shape name:", collapsed_names,
+        stop("Can't find starshape name:", collapsed_names,
              more_problems, call. = FALSE)
     }
     if (any(nonunique_strings)) {
@@ -130,20 +130,20 @@ translate_starshape_string <- function(starshape_string){
         n_bad <- length(bad_string)
         
         n_matches <- vapply(
-	     bad_string[1:min(5, n_bad)],
+	     bad_string[1:min(9, n_bad)],
 	     function(starshape_string) sum(grepl(paste0("^", starshape_string), names(starshape_table))),
 	     integer(1))
 
-        collapsed_names <- sprintf("\n* '%s' partially matches %d shape names",
-				   bad_string[1:min(5, n_bad)], n_matches)
+        collapsed_names <- sprintf("\n* '%s' partially matches %d starshape names",
+				   bad_string[1:min(9, n_bad)], n_matches)
 
-        more_problems <- if (n_bad > 5) {sprintf("\n* ... and %d more problem%s", 
-                                                n_bad - 5, ifelse(n_bad > 6, "s", ""))}
+        more_problems <- if (n_bad > 9) {sprintf("\n* ... and %d more problem%s", 
+                                                n_bad - 9, ifelse(n_bad > 10, "s", ""))}
 
-	stop("Shape names must be unambiguous:",
+	stop("starshape names must be unambiguous:",
              collapsed_names,
              more_problems,
              call. = FALSE)
     }
-    unname(starshape_table[shape_match])
+    unname(starshape_table[starshape_match])
 }
