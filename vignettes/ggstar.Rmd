@@ -1,0 +1,103 @@
+---
+title: "star layer for ggplot2"
+author: |
+  | Shuangbin Xu 
+  | School of Basic Medical Sciences, Southern Medical University
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    toc: true
+    theme: cayman
+    highlight: vignette
+  pdf_document:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{ ggstar: basics using.}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo=FALSE, results="asis", message=FALSE, KnitrSetUp}
+knitr::opts_chunk$set(tidy=FALSE,warning=FALSE,message=FALSE)
+Biocpkg <- function (pkg){
+    sprintf("[%s](http://bioconductor.org/packages/%s)", pkg, pkg)
+}
+
+CRANpkg <- function(pkg){
+    cran <- "https://CRAN.R-project.org/package" 
+    fmt <- "[%s](%s=%s)"
+    sprintf(fmt, pkg, cran, pkg) 
+}
+```
+
+```{r, echo=FALSE, results="hide", message=FALSE, Loadpackages}
+library(ggplot2)
+library(ggstar)
+```
+
+# 1. Introduction
+
+`ggstar` provides geoms for `r CRANpkg("ggplot2")` to create more easily discernible shapes:
+
+`geom_star`
+
+```{r, fig.width=5, fig.height=3, fig.align="center", starshapes}
+p1 <- show_starshapes()
+p1
+```
+
+And the default is: `c(1, 2, 9, 4, 3, 5, 6, 11, 12)[seq_len(n)]`. `n` is the number of shapes you want to use.
+
+# 2. Install
+
+`ggstar` hasn't been submitted on [CRAN](https://cran.r-project.org/), you can use the following to install it.
+
+```r
+# for devel
+if(!requireNamespace("devtools", quietly=TRUE)){
+    install.packages("remotes")
+}
+remotes::install_github("xiangpin/ggstar")
+# for release
+```
+
+# 3. Usage
+
+`geom_star` is similar to `geom_point` of `r CRANpkg("ggplot2")`. The difference point is `geom_star` use `starshape` to mapping the `starshapes`. The another is `geom_star` use `scale_starshape_manual` for manual scale. And the shapes will be not distorted on cartesian coordinates or polar coordinates.
+
+## 3.1 Cartesian coordinates
+
+```{r, fig.width=6, fig.height=5, fig.align="center", sizeshape}
+library(ggplot2)
+library(ggstar)
+p2 <- ggplot(data=iris, aes(x=Sepal.Width,y=Sepal.Length)) + 
+      geom_star(aes(starshape=Species, fill=Species), size=6.5) +
+      scale_fill_manual(values=c("#E41A1C", "#377EB8", "#4DAF4A")) +
+      theme(legend.spacing.y = unit(0.02, "cm"))
+p2
+```
+
+## 3.2 Polar coordinates
+
+```{r, fig.width=6, fig.height=5.2, fig.align="center", polarcoord}
+p3 <- ggplot(data=mtcars, aes(x=wt, y=mpg)) +
+      geom_star(aes(fill=cyl), size=6.5) +
+      scale_fill_gradient(low="blue", high="red") +
+      coord_polar() +
+      theme(panel.border=element_blank(),
+            legend.spacing.y = unit(0.02, "cm"))
+p3
+```
+
+# 4. Need helps?
+
+If you have questions/issues, please visit [github issue tracker](https://github.com/xiangpin/ggstar/issues).
+
+# 5. Session information
+
+Here is the output of sessionInfo() on the system on which this document was compiled:
+
+```{r, echo=FALSE}
+sessionInfo()
+```
