@@ -32,3 +32,6 @@ show_starshapes <- function(...){
                axis.text=element_blank(),...) 
     p
 }
+
+#' @importFrom utils getFromNamespace
+rd_aesthetics <- getFromNamespace("rd_aesthetics", "ggplot2")
