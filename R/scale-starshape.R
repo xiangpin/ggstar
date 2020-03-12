@@ -46,9 +46,9 @@ starshape_pal <- function(default=TRUE){
         warning(paste(strwrap(msg), collapse = "\n"), call. = FALSE)
     }
     if (default){
-        c(1, 2, 4, 9, 3, 5, 6, 7, 8)[seq_len(n)]
+        c(1, 2, 9, 4, 3, 5, 6, 11, 12)[seq_len(n)]
     }else{
-        c(1, 2, 3, 4, 5, 6, 7, 8, 9)
+        c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)[seq_len(n)]
     }
 }
 }
