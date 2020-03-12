@@ -19,7 +19,7 @@ draw_key_star <- function(data, params, size){
     } else if (! is.numeric(data$starshape)) {
         data$starshape <- translate_starshape(data$starshape)
     }
-    grid.star(x=0.5, y=0.5,
+    starGrob(x=0.5, y=0.5,
               starshape=data$starshape,
               size=data$size*.pt/10, 
               gp=gpar(fill=alpha(data$fill, data$alpha),
