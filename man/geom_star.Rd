@@ -57,7 +57,7 @@ Star layer
 library(ggplot2)
 p <- ggplot(iris, aes(x=Sepal.Length, 
                       y=Sepal.Width, 
-                      color=Species)) + 
+                      starshape=Species)) + 
      geom_star(size=4)
 p
 }
