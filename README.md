@@ -2,6 +2,9 @@
 
 # ggstar: star layer for ggplot2
 
+ggstar is designed to create the siogon layer to easily discernible
+shapes for ggplot2.
+
 # :writing\_hand: Author
 
 [Shuangbin Xu](https://github.com/xiangpin)
@@ -17,6 +20,10 @@ devtools::install_github("xiangpin/ggstar")
 ```
 
 # :beginner: Usage
+
+Total starshapes:
+
+![](./inst/extdata/starshapes.png)
 
 ``` r
 library(ggplot2)
@@ -53,3 +60,9 @@ p3
 ```
 
 ![](./inst/extdata/figure3.png)
+
+## :sparkling\_heart: Contributing
+
+We welcome any contributions\! By participating in this project you
+agree to bide by the terms outlined in the [Contributor Code of
+Conduct](CONDUCT.md).
