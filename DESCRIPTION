@@ -1,12 +1,13 @@
 Package: ggstar
 Title: star layer for ggplot2
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: 
     person(given = "Shuangbin",
            family = "Xu",
            role = c("aut", "cre"),
            email = "xshuangbin@163.com")
-Description: What the package does (one paragraph).
+Description: ggstar is designed to create the siogon layer to easily 
+             discernible shapes for ggplot2.
 Depends: 
   R (>= 3.5)
 Imports:
@@ -14,7 +15,12 @@ Imports:
   ggplot2,
   scales,
   gridExtra
+Suggests:
+  knitr
 License: Artistic-2.0
 Encoding: UTF-8
+URL: https://github.com/xiangpin/ggstar/
+BugReports: https://github.com/xiangpin/ggstar/issues
+VignetteBuilder: knitr
 LazyData: false
 RoxygenNote: 7.0.2 
