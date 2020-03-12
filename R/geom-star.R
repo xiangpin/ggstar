@@ -1,5 +1,9 @@
-#' @title Star layer
+#' Star layer
 #' 
+#' geom_star provides the siogon layer to easily discernible 
+#' starshapes for ggplot2, you can use it to create scatterplots.
+#'
+#' @eval rd_aesthetics("geom", "star")
 #' @inheritParams ggplot2::layer
 #' @param na.rm If `FALSE`, the default, missing values are removed with
 #'     a warning. If `TRUE`, missing values are silently removed.
@@ -11,7 +15,7 @@
 #' library(ggplot2)
 #' p <- ggplot(iris, aes(x=Sepal.Length, 
 #'                       y=Sepal.Width, 
-#'                       color=Species)) + 
+#'                       starshape=Species)) + 
 #'      geom_star(size=4)
 #' p
 geom_star <- function(mapping = NULL, 
@@ -30,33 +34,34 @@ geom_star <- function(mapping = NULL,
           inherit.aes = inherit.aes)
 }
 
-#' @importFrom grid polygonGrob gpar
-starGrob <- function(starshape=NULL, size=NULL, angle=NULL, fill=NULL, 
-                     col=NULL, alpha=NULL, ar=NULL, 
-                     phase=NULL, vp=NULL, name=NULL){
-    grid.star(x = 0.5, 
-              y = 0.5, 
-              starshape = starshape,
-              size = size,
-              angle = angle,
-              ar = ar,
-              phase = phase,
-              gp=gpar(fill = fill,
-                      col = col,
-                      alpha = alpha),
-              vp = vp,
-              name = name)
-}
+#####' @importFrom grid polygonGrob gpar
+#starGrob <- function(starshape=NULL, size=NULL, angle=NULL, fill=NULL, 
+#                     col=NULL, alpha=NULL, ar=NULL, 
+#                     phase=NULL, vp=NULL, name=NULL){
+#    StarGrob(x = 0.5, 
+#              y = 0.5, 
+#              starshape = starshape,
+#              size = size,
+#              angle = angle,
+#              ar = ar,
+#              phase = phase,
+#              gp=gpar(fill = fill,
+#                      col = col,
+#                      alpha = alpha),
+#              vp = vp,
+#              name = name)
+#}
 
 #' @importFrom ggplot2 aes ggproto Geom
-#' @importFrom grid viewport gTree
+#' @importFrom grid viewport gTree gpar
+#' @author Shuangbin Xu
 GeomStar <- ggproto("GeomStar", 
                     Geom, 
                     required_aes = c("x", "y"),
-                    non_missing_aes = c("size", "starshape", "fill"),
-                    default_aes = aes(size = 4.5, fill = "black", starshape=1, 
+                    non_missing_aes = c("size", "starshape"),
+                    default_aes = aes(size = 6, fill = "black", starshape=1, 
                                       angle=0, colour = NA, alpha = 1, ar=1, 
-                                      phase=0),
+                                      phase=0, starstroke=0.5),
                     draw_key = draw_key_star,
                     draw_panel=function(data, panel_params, coord){
                         if (!is.numeric(data$starshape)){
@@ -70,9 +75,10 @@ GeomStar <- ggproto("GeomStar",
                                            height=coords$size[i],
                                            just = c("center", "center"),
                                            default.units = "native")
-                            starGrob(fill = coords$fill[i],
-                                     col = coords$colour[i],
-                                     alpha = coords$alpha[i],
+                            starGrob(gp=gpar(fill = coords$fill[i],
+                                             col = coords$colour[i],
+                                             alpha = coords$alpha[i],
+                                             lwd = coords$starstroke[i] * .starstroke / 2),
                                      size = coords$size[i],
                                      starshape = coords$starshape[i],
                                      angle = coords$angle[i],
@@ -96,19 +102,22 @@ translate_starshape <- function(starshape){
     return(starshape)
 }
 
+starshape_table <- c(
+                 "pentagram" = 1,
+                 "magen david" = 2,
+                 "seven pointed star" = 3,
+                 "anise star" = 4,
+                 "regular pentagon" = 5,
+                 "hexagon" = 6,
+                 "regular heptagon" = 7,
+                 "regular octagon" = 8,
+                 "anise star2" = 9,
+                 "anise star3" = 10,
+                 "regular triangle" = 11,
+                 "rhombus" = 12)
+
 # reference ggplot2
 translate_starshape_string <- function(starshape_string){
-    starshape_table <- c(
-                     "pentagram" = 1,
-                     "magen david" = 2,
-                     "seven pointed star" = 3,
-                     "anise star" = 4,
-                     "regular pentagon" = 5,
-                     "hexagon" = 6,
-                     "regular heptagon" = 7,
-                     "regular octagon" = 8,
-                     "anise star2" = 9,
-                     "anise star3" = 10)
 
     starshape_match <- charmatch(starshape_string, names(starshape_table))
     invalid_strings <- is.na(starshape_match)
