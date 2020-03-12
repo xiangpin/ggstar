@@ -51,8 +51,29 @@ the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 \item{...}{Other arguments passed on to \code{\link[ggplot2]{layer}}.}
 }
 \description{
-Star layer
+geom_star provides the siogon layer to easily discernible 
+starshapes for ggplot2, you can use it to create scatterplots.
 }
+\section{Aesthetics}{
+
+\code{geom_star()} understands the following aesthetics (required aesthetics are in bold):
+\itemize{
+  \item \strong{\code{x}}
+  \item \strong{\code{y}}
+  \item \code{alpha}
+  \item \code{angle}
+  \item \code{ar}
+  \item \code{colour}
+  \item \code{fill}
+  \item \code{group}
+  \item \code{phase}
+  \item \code{size}
+  \item \code{starshape}
+  \item \code{starstroke}
+}
+Learn more about setting these aesthetics in \code{vignette("ggplot2-specs")}.
+}
+
 \examples{
 library(ggplot2)
 p <- ggplot(iris, aes(x=Sepal.Length, 
