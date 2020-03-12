@@ -12,6 +12,7 @@ Depends:
   R (>= 3.5)
 Imports:
   grid,
+  utils,
   ggplot2,
   scales,
   gridExtra
