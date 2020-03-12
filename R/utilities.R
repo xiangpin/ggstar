@@ -3,6 +3,7 @@
 ggname <- getFromNamespace("ggname", "ggplot2")
 
 .pt <- 72.27 / 25.4
+.starstroke <- 96 / 25.4
 
 #' @title Show the total star shapes
 #' @param ... see also \code{\link[ggplot2]{theme}}.
