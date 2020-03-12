@@ -1,6 +1,6 @@
 #' @importFrom grid unit convertX convertY is.unit 
 #' @importFrom gridExtra polygon_regular
-grid.star <- function(x, y,
+starGrob <- function(x=0.5, y=0.5,
                      starshape=1, size=2, 
                      angle=0, ar=1,
                      phase = 0,
@@ -16,7 +16,7 @@ grid.star <- function(x, y,
     xv <- convertX(x, position.units, TRUE)
     yv <- convertY(y, position.units, TRUE)
     
-    stargrob <- .grid.star(xv=xv, yv=yv,
+    stargrob <- .starGrob(xv=xv, yv=yv,
                            starshape=starshape,
                            size = size,
                            angle = angle, 
@@ -28,17 +28,40 @@ grid.star <- function(x, y,
     return (stargrob)
 }
 
+#' @importFrom grid grid.draw
+grid.star <- function(x=0.5, y=0.5,
+                      starshape=1, size=2,
+                      angle=0, ar=1,
+                      phase = 0,
+                      gp = NULL,
+                      position.units = "npc",
+                      size.units="mm",
+                      draw = TRUE, vp = NULL, ...){
+    sg <- starGrob(x = x, y = y, 
+                   starshape = 1, size = 2, 
+                   angle = angle, 
+                   ar = ar,
+                   gp = gp, 
+                   position.units = position.units,
+                   size.units = size.units,
+                   vp = vp,...)
+    if (draw){
+        grid.draw(sg)
+    }
+    invisible(sg)
+}
+
 #' @importFrom gridExtra polygon_regular
 #' @importFrom grid gList polygonGrob
-.grid.star <- function(xv, yv, 
+.starGrob <- function(xv, yv, 
                        starshape, size,
                        angle, ar,
                        phase,
                        gp,
                        position.units,
                        size.units, ...){
-    if (!starshape%in%seq_len(10)){
-        stop("the starshape should be one of 1 to 10 !")
+    if (!starshape%in%seq_len(12)){
+        stop("the starshape should be one of 1 to 12 !")
     }
     if (starshape==1){
         locoord <- polygon_regular(n=5, phase=phase)
@@ -61,7 +84,14 @@ grid.star <- function(x, y,
     else if (starshape==7){
         locoord <- polygon_regular(n=7, phase=phase)
     }
-    if (starshape == 10) {ar=0.5}
+    else if (starshape==11){
+        locoord <- polygon_regular(n=3, phase=phase)
+    }
+    else if (starshape==12){
+        locoord <- polygon_regular(n=4, phase=phase)
+        ar <- 0.5
+    }
+    if (starshape == 10) {ar <- 0.5}
     lxy <- stretch_rotate_move(p=locoord,
                                size = size,
                                ar = ar,
