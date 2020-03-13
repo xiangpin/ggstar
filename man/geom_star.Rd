@@ -62,7 +62,6 @@ starshapes for ggplot2, you can use it to create scatterplots.
   \item \strong{\code{y}}
   \item \code{alpha}
   \item \code{angle}
-  \item \code{ar}
   \item \code{colour}
   \item \code{fill}
   \item \code{group}
