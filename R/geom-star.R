@@ -34,33 +34,15 @@ geom_star <- function(mapping = NULL,
           inherit.aes = inherit.aes)
 }
 
-#####' @importFrom grid polygonGrob gpar
-#starGrob <- function(starshape=NULL, size=NULL, angle=NULL, fill=NULL, 
-#                     col=NULL, alpha=NULL, ar=NULL, 
-#                     phase=NULL, vp=NULL, name=NULL){
-#    StarGrob(x = 0.5, 
-#              y = 0.5, 
-#              starshape = starshape,
-#              size = size,
-#              angle = angle,
-#              ar = ar,
-#              phase = phase,
-#              gp=gpar(fill = fill,
-#                      col = col,
-#                      alpha = alpha),
-#              vp = vp,
-#              name = name)
-#}
-
 #' @importFrom ggplot2 aes ggproto Geom
-#' @importFrom grid viewport gTree gpar
+#' @importFrom grid viewport gpar
 #' @author Shuangbin Xu
 GeomStar <- ggproto("GeomStar", 
                     Geom, 
                     required_aes = c("x", "y"),
                     non_missing_aes = c("size", "starshape"),
                     default_aes = aes(size = 6, fill = "black", starshape=1, 
-                                      angle=0, colour = NA, alpha = 1, ar=1, 
+                                      angle=0, colour = NA, alpha = 1,  
                                       phase=0, starstroke=0.5),
                     draw_key = draw_key_star,
                     draw_panel=function(data, panel_params, coord){
@@ -68,27 +50,23 @@ GeomStar <- ggproto("GeomStar",
                             data$starshape <- translate_starshape(data$starshape)
                         }
                         coords <- coord$transform(data, panel_params)
-                        coords$size <- (coords$size *.pt )/10
-                        grobs <- lapply(seq_len(nrow(coords)), function(i){
-                            vp <- viewport(x=coords$x[i], y=coords$y[i],
-                                           width=coords$size[i], 
-                                           height=coords$size[i],
-                                           just = c("center", "center"),
-                                           default.units = "native")
-                            starGrob(gp=gpar(fill = coords$fill[i],
-                                             col = coords$colour[i],
-                                             alpha = coords$alpha[i],
-                                             lwd = coords$starstroke[i] * .starstroke / 2),
-                                     size = coords$size[i],
-                                     starshape = coords$starshape[i],
-                                     angle = coords$angle[i],
-                                     ar = coords$ar[i],
-                                     phase = coords$phase[i],
-                                     vp = vp, 
-                                     name = i)
-                        })
-                    class(grobs) <- "gList"
-                    ggname("geom_star", gTree(children = grobs))
+                        coords$size <- (coords$size *.pt)/10
+                        coords$starstroke <- coords$starstroke * .starstroke / 2
+                        allattr <- mapply(build_starshape_attr, starshape=coords$starshape, 
+                                          fill=coords$fill, alpha=coords$alpha, col=coords$colour, 
+                                          lwd=coords$starstroke, SIMPLIFY=FALSE) 
+                        grobs <- starGrob(x=coords$x,
+                                          y=coords$y,
+                                          gp=gpar(fill = mutate_attr(allattr,"fill"),
+                                                  col = mutate_attr(allattr,"col"),
+                                                  alpha = mutate_attr(allattr,"alpha"),
+                                                  lwd = mutate_attr(allattr, "lwd")),
+                                          size = coords$size,
+                                          starshape = coords$starshape,
+                                          angle = coords$angle,
+                                          phase = coords$phase,
+                                         )
+                        ggname("geom_star", grobs)
                     }
             )
 
