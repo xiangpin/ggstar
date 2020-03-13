@@ -1,4 +1,4 @@
-#' @importFrom grid unit convertX convertY is.unit unit.c
+#' @importFrom grid unit convertX convertY is.unit unit.c gpar
 starGrob <- function(x=0.5, y=0.5,
                      starshape=1, size=2, 
                      angle=0, 
@@ -35,7 +35,7 @@ starGrob <- function(x=0.5, y=0.5,
                   SIMPLIFY = FALSE)
     allx <- do.call("unit.c", lapply(lxy, "[[", 1))
     ally <- do.call("unit.c", lapply(lxy, "[[", 2))
-    grobs <- polygonGrob(allx, ally, id.lengths = vertices, gp = gp, ...) 
+    grobs <- polygonGrob(allx, ally, id.lengths = vertices, gp = gp, ...)
     return(grobs)
 }
 
