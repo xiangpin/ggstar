@@ -50,17 +50,25 @@ GeomStar <- ggproto("GeomStar",
                             data$starshape <- translate_starshape(data$starshape)
                         }
                         coords <- coord$transform(data, panel_params)
+                        coords <- lapply(coords, function(x)x)
                         coords$size <- (coords$size *.pt)/10
                         coords$starstroke <- coords$starstroke * .starstroke / 2
-                        allattr <- mapply(build_starshape_attr, starshape=coords$starshape, 
-                                          fill=coords$fill, alpha=coords$alpha, col=coords$colour, 
-                                          lwd=coords$starstroke, SIMPLIFY=FALSE) 
+                        if (2 %in% coords$starshape || 4 %in% coords$starshape){
+                            allattr <- mapply(build_starshape_attr, starshape=coords$starshape, 
+                                              fill=coords$fill, alpha=coords$alpha, 
+                                              col=coords$colour, lwd=coords$starstroke, 
+                                              SIMPLIFY=FALSE)
+                            coords$fill <- mutate_attr(allattr, "fill")
+                            coords$colour <- mutate_attr(allattr, "col")
+                            coords$alpha <- mutate_attr(allattr, "alpha")
+                            coords$starstroke <- mutate_attr(allattr, "lwd")
+                        }
                         grobs <- starGrob(x=coords$x,
                                           y=coords$y,
-                                          gp=gpar(fill = mutate_attr(allattr,"fill"),
-                                                  col = mutate_attr(allattr,"col"),
-                                                  alpha = mutate_attr(allattr,"alpha"),
-                                                  lwd = mutate_attr(allattr, "lwd")),
+                                          gp=gpar(fill = coords$fill,
+                                                  col = coords$colour,
+                                                  alpha = coords$alpha,
+                                                  lwd = coords$starstroke),
                                           size = coords$size,
                                           starshape = coords$starshape,
                                           angle = coords$angle,
