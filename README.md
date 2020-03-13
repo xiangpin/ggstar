@@ -2,8 +2,8 @@
 
 # ggstar: star layer for ggplot2
 
-ggstar is designed to create the siogon layer to easily discernible
-shapes for ggplot2.
+This package is designed to create the regular polygon layer for easily
+discernible shapes.
 
 # :writing\_hand: Author
 
