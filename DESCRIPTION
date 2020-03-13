@@ -1,13 +1,13 @@
 Package: ggstar
-Title: star layer for ggplot2
+Title: Star Layer for ggplot2
 Version: 0.0.1
 Authors@R: 
     person(given = "Shuangbin",
            family = "Xu",
            role = c("aut", "cre"),
            email = "xshuangbin@163.com")
-Description: ggstar is designed to create the siogon layer to easily 
-             discernible shapes for ggplot2.
+Description: 'ggstar' is designed to create the regular polygon layer to easily 
+             discernible shapes for 'ggplot2'.
 Depends: 
   R (>= 3.5)
 Imports:
