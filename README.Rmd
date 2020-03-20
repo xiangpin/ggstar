@@ -34,7 +34,7 @@ School of Basic Medical Sciences, Southern Medical University
 Get the released version from `CRAN`:
 
 ```r
-install.packages("meme")
+install.packages("ggstar")
 ```
 
 Or the development version from `github`:
