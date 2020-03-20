@@ -3,7 +3,7 @@
 # ggstar: star layer for ggplot2
 
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/ggstar?color=green)](https://cran.r-project.org/package=ggstar)
-badge\_devel(“xiangpin/ggstar”, “green”)
+<!-- r badge_devel("xiangpin/ggstar", "green") -->
 [![](https://cranlogs.r-pkg.org/badges/grand-total/ggstar?color=green)](https://cran.r-project.org/package=ggstar)
 [![](https://cranlogs.r-pkg.org/badges/ggstar?color=green)](https://cranlogs.r-pkg.org/downloads/total/last-month/ggstar)
 [![](https://cranlogs.r-pkg.org/badges/last-week/ggstar?color=green)](https://cranlogs.r-pkg.org/downloads/total/last-week/ggstar)
