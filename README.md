@@ -2,8 +2,14 @@
 
 # ggstar: star layer for ggplot2
 
-This package is designed to create the regular polygon layer for easily
-discernible shapes.
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/ggstar?color=green)](https://cran.r-project.org/package=ggstar)
+badge\_devel(“xiangpin/ggstar”, “green”)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/ggstar?color=green)](https://cran.r-project.org/package=ggstar)
+[![](https://cranlogs.r-pkg.org/badges/ggstar?color=green)](https://cranlogs.r-pkg.org/downloads/total/last-month/ggstar)
+[![](https://cranlogs.r-pkg.org/badges/last-week/ggstar?color=green)](https://cranlogs.r-pkg.org/downloads/total/last-week/ggstar)
+
+To create the regular polygon layer for easily discernible shapes, we
+developed the package, it can be easily used if you know the ‘ggplot2’.
 
 # :writing\_hand: Author
 
@@ -12,6 +18,14 @@ discernible shapes.
 School of Basic Medical Sciences, Southern Medical University
 
 # :arrow\_double\_down: Installation
+
+Get the released version from `CRAN`:
+
+``` r
+install.packages("meme")
+```
+
+Or the development version from `github`:
 
 ``` r
 if (!requireNamespace("devtools", quietly=TRUE))
@@ -61,7 +75,18 @@ p3
 
 ![](./inst/extdata/figure3.png)
 
-## :sparkling\_heart: Contributing
+# :book: Vignette
+
+For more details, please refer to the [online
+vignette](https://cran.r-project.org/web/packages/ggstar/vignettes/ggstar.html)
+
+If you have installed it, you can also view the vignette on local.
+
+``` r
+browseVignettes("ggstar")
+```
+
+# :sparkling\_heart: Contributing
 
 We welcome any contributions\! By participating in this project you
 agree to bide by the terms outlined in the [Contributor Code of
