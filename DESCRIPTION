@@ -25,4 +25,4 @@ URL: https://github.com/xiangpin/ggstar/
 BugReports: https://github.com/xiangpin/ggstar/issues
 VignetteBuilder: knitr
 LazyData: false
-RoxygenNote: 7.0.2 
+RoxygenNote: 7.1.0
