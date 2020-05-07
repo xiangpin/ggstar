@@ -2,6 +2,8 @@
 
 # ggstar: star layer for ggplot2
 
+<img src="https://github.com/xiangpin/ggstar/blob/master/inst/extdata/ggstar.png" height="200" align="right" />
+
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/ggstar?color=green)](https://cran.r-project.org/package=ggstar)
 <!-- r badge_devel("xiangpin/ggstar", "green") -->
 [![](https://cranlogs.r-pkg.org/badges/grand-total/ggstar?color=green)](https://cran.r-project.org/package=ggstar)
