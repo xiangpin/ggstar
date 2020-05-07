@@ -35,3 +35,10 @@ clean:
 clean2:
 	cd ..;\
 	$(RM) $(PKGNAME)_$(PKGVERS).tar.gz
+
+bignore:
+	Rscript -e 'usethis::use_build_ignore(glob2rx("inst/extdata/*.png"), escape = FALSE)'
+	Rscript -e 'usethis::use_build_ignore(c("Makefile", "README.md", "README.Rmd", "CONDUCT.md", ".Rproj.user", ".Rproj"))'
+
+gignore:
+	Rscript -e 'usethis::use_git_ignore(c(".DS_Store", ".RData", ".Rhistory", ".Rproj.user"))'
