@@ -4,3 +4,4 @@ README.Rmd
 CONDUCT.md
 README.md
 Makefile
+^inst/extdata/.*\.png$
