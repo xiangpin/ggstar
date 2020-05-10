@@ -34,9 +34,14 @@ geom_star <- function(mapping = NULL,
           inherit.aes = inherit.aes)
 }
 
+#' GeomStar
 #' @importFrom ggplot2 aes ggproto Geom
 #' @importFrom grid viewport gpar
 #' @author Shuangbin Xu
+#' @rdname ggstar-ggproto
+#' @format NULL
+#' @usage NULL
+#' @export
 GeomStar <- ggproto("GeomStar", 
                     Geom, 
                     required_aes = c("x", "y"),
