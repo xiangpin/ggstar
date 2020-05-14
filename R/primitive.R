@@ -69,34 +69,25 @@ match_ar <- function(starshape){
 build_polygenxy_id.lengths <- function(starshape, phase){
     # the edge numbers
     n <- match_n(starshape)
-    if (starshape==1){
-        plxy <- polygon_regular(n=n, phase=phase)
-        tmpx <- plxy[,1][c(1, 3, 5, 2, 4)]
-        tmpy <- plxy[,2][c(1, 3, 5, 2, 4)]
-        plxy <- cbind(tmpx, tmpy, deparse.level = 0)
-    }else if(starshape==3){
-        plxy <- polygon_regular(n=n, phase=phase)
-        tmpx <- plxy[,1][c(1, 4, 7, 3, 6, 2, 5)]
-        tmpy <- plxy[,2][c(1, 4, 7, 3, 6, 2, 5)]
-        plxy <- cbind(tmpx, tmpy, deparse.level = 0)
-    }else if (starshape==2 || starshape==4){
+    if (starshape %in% c(1, 2, 3, 4, 9, 10)){
         phase2 <- phase + pi/n
         tmpplxy <- mapply(polygon_regular, 
                phase=c(phase, phase2), 
                n=rep(n, 2), SIMPLIFY=FALSE)
-        if (starshape==2){
+        if (starshape==1){
+            tmpplxy[[2]] <- 0.38 * tmpplxy[[2]]
+        }else if (starshape==2){
             tmpplxy[[2]] <- 0.556 * tmpplxy[[2]]
-        }else{
+        }else if (starshape==3){
+            tmpplxy[[2]] <- 0.32 * tmpplxy[[2]]
+        }else if (starshape==4){
             tmpplxy[[2]] <- 0.756 * tmpplxy[[2]]
+        }else{
+            tmpplxy[[2]] <- 0.5 * tmpplxy[[2]]
         }
         tmpplxy <- lapply(tmpplxy,function(x)data.frame(x[-nrow(x),]))
         plxy <- as.matrix(mapply(function(x,y){rbind(x,y)},tmpplxy[[1]],tmpplxy[[2]]))
         colnames(plxy) <- c("x", "y")
-    }else if(starshape==9 || starshape==10){
-        plxy <- polygon_regular(n=n, phase=phase)
-        tmpx <- plxy[,1][c(1, 6, 3, 8, 5, 2, 7, 4)]
-        tmpy <- plxy[,2][c(1, 6, 3, 8, 5, 2, 7, 4)]
-        plxy <- cbind(tmpx, tmpy, deparse.level = 0)
     }
     else{
         plxy <- polygon_regular(n=n, phase=phase)

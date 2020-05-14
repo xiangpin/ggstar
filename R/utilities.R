@@ -21,7 +21,7 @@ show_starshapes <- function(...){
                        y=rep(1:3, each = 4, len = 12),
                        group=letters[c(1:12)])
     p <- ggplot(data=data, aes(x=x,y=y)) +
-         geom_star(aes(starshape=group), size=2, show.legend=FALSE) +
+         geom_star(aes(starshape=group),fill="red", size=3, show.legend=FALSE) +
          geom_text(aes(label=names(starshape_table[c(1:12)])),
                        nudge_y=0.3, size=3, fontface="bold.italic") +
          geom_text(aes(label=as.character(c(1:12))), nudge_y=-0.2) + 
