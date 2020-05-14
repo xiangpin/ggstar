@@ -23,6 +23,6 @@ draw_key_star <- function(data, params, size){
              starshape=data$starshape,
              gp=gpar(fill=alpha(data$fill, data$alpha),
                      col =alpha(data$colour, data$alpha),
-                     fontsize = ((data$size %||% 1.5) * .pt + (data$starstroke %||% 0.5) * .starstroke / 2)/4,
+                     fontsize = ((data$size %||% 1.5) * .pt + (data$starstroke %||% 0.5) * .starstroke / 2)/5,
                      lwd = (data$starstroke %||% 0.5) * .starstroke / 2))
 }
