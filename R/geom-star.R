@@ -41,7 +41,7 @@ GeomStar <- ggproto("GeomStar",
                     Geom, 
                     required_aes = c("x", "y"),
                     non_missing_aes = c("size", "starshape"),
-                    default_aes = aes(size = 6, fill = "black", starshape=1, 
+                    default_aes = aes(size = 1.5, fill = "black", starshape=1, 
                                       angle=0, colour = NA, alpha = 1,  
                                       phase=0, starstroke=0.5),
                     draw_key = draw_key_star,
@@ -50,26 +50,12 @@ GeomStar <- ggproto("GeomStar",
                             data$starshape <- translate_starshape(data$starshape)
                         }
                         coords <- coord$transform(data, panel_params)
-                        coords <- lapply(coords, function(x)x)
-                        coords$size <- (coords$size *.pt)/10
-                        coords$starstroke <- coords$starstroke * .starstroke / 2
-                        if (2 %in% coords$starshape || 4 %in% coords$starshape){
-                            allattr <- mapply(build_starshape_attr, starshape=coords$starshape, 
-                                              fill=coords$fill, alpha=coords$alpha, 
-                                              col=coords$colour, lwd=coords$starstroke, 
-                                              SIMPLIFY=FALSE)
-                            coords$fill <- mutate_attr(allattr, "fill")
-                            coords$colour <- mutate_attr(allattr, "col")
-                            coords$alpha <- mutate_attr(allattr, "alpha")
-                            coords$starstroke <- mutate_attr(allattr, "lwd")
-                        }
                         grobs <- starGrob(x=coords$x,
                                           y=coords$y,
-                                          gp=gpar(fill = coords$fill,
-                                                  col = coords$colour,
-                                                  alpha = coords$alpha,
-                                                  lwd = coords$starstroke),
-                                          size = coords$size,
+                                          gp=gpar(fill = alpha(coords$fill, coords$alpha),
+                                                  col = alpha(coords$colour, coords$alpha),
+                                                  fontsize = (coords$size * .pt + coords$starstroke * .starstroke/2)/4,
+                                                  lwd = coords$starstroke * .starstroke / 2),
                                           starshape = coords$starshape,
                                           angle = coords$angle,
                                           phase = coords$phase,
