@@ -1,9 +1,10 @@
 #' @importFrom grid unit convertX convertY is.unit unit.c gpar
 starGrob <- function(x=0.5, y=0.5,
-                     starshape=1, size=2, 
+                     starshape=1, 
                      angle=0, 
                      phase = 0,
                      gp = gpar(fill="black",
+                               fontsize=2,
                                alpha=1,
                                col=NA,
                                lwd=0.5),
@@ -19,11 +20,15 @@ starGrob <- function(x=0.5, y=0.5,
     xv <- convertX(x, position.units, TRUE)
     yv <- convertY(y, position.units, TRUE)
     n <- match_n(starshape)
-    plxy_ids <- mapply(build_polygenxy_id.lengths, 
+    if (is.null(gp)){
+        size <- 2
+    }else{
+        size <- gp$fontsize
+    }
+    lnxy <- mapply(build_polygenxy_id.lengths, 
                        starshape=starshape, 
                        phase=phase, SIMPLIFY=FALSE)
-    lnxy <- lapply(plxy_ids, function(x)x$plxy)
-    vertices <- unlist(lapply(plxy_ids, function(x)x$ids))
+    vertices <- unlist(lapply(lnxy, function(x)nrow(x)))
     # ar is the aspect ratio. It can control the 
     # height and width ratio of shapes.
     ar <- match_ar(starshape)
@@ -40,7 +45,7 @@ starGrob <- function(x=0.5, y=0.5,
 }
 
 # index of starshape = numbers of edge (n)
-starshape_ntab <- c(5, 3, 7, 4,
+starshape_ntab <- c(5, 6, 7, 8,
                     5, 6, 7, 8,
 		    8, 8, 3, 4)
 
@@ -60,22 +65,6 @@ match_ar <- function(starshape){
     return(unname(ar))
 }
 
-build_starshape_attr <- function(starshape, fill, col, lwd, alpha){
-    if (starshape==2 || starshape==4){
-        fill <- rep(fill, 2)
-        col <- rep(col, 2)
-        lwd <- rep(lwd, 2)
-        alpha <- rep(alpha, 2)
-    }
-    allattr <- list(fill=fill, col=col, lwd=lwd, alpha=alpha)
-    return(allattr)
-}
-
-mutate_attr <- function(mapplyres, attrstr){
-    res <- unlist(lapply(mapplyres, function(x)x[[attrstr]]))
-    return(res)
-}
-
 #' @importFrom gridExtra polygon_regular
 build_polygenxy_id.lengths <- function(starshape, phase){
     # the edge numbers
@@ -85,37 +74,39 @@ build_polygenxy_id.lengths <- function(starshape, phase){
         tmpx <- plxy[,1][c(1, 3, 5, 2, 4)]
         tmpy <- plxy[,2][c(1, 3, 5, 2, 4)]
         plxy <- cbind(tmpx, tmpy, deparse.level = 0)
-        ids <- nrow(plxy)
     }else if(starshape==3){
         plxy <- polygon_regular(n=n, phase=phase)
         tmpx <- plxy[,1][c(1, 4, 7, 3, 6, 2, 5)]
         tmpy <- plxy[,2][c(1, 4, 7, 3, 6, 2, 5)]
         plxy <- cbind(tmpx, tmpy, deparse.level = 0)
-        ids <- nrow(plxy)
     }else if (starshape==2 || starshape==4){
         phase2 <- phase + pi/n
-        plxy <- mapply(polygon_regular, 
+        tmpplxy <- mapply(polygon_regular, 
                phase=c(phase, phase2), 
                n=rep(n, 2), SIMPLIFY=FALSE)
-        plxy <- do.call("rbind", plxy)
-        ids <- rep(nrow(plxy)/2, 2)
+        if (starshape==2){
+            tmpplxy[[2]] <- 0.556 * tmpplxy[[2]]
+        }else{
+            tmpplxy[[2]] <- 0.756 * tmpplxy[[2]]
+        }
+        tmpplxy <- lapply(tmpplxy,function(x)data.frame(x[-nrow(x),]))
+        plxy <- as.matrix(mapply(function(x,y){rbind(x,y)},tmpplxy[[1]],tmpplxy[[2]]))
+        colnames(plxy) <- c("x", "y")
     }else if(starshape==9 || starshape==10){
         plxy <- polygon_regular(n=n, phase=phase)
         tmpx <- plxy[,1][c(1, 6, 3, 8, 5, 2, 7, 4)]
         tmpy <- plxy[,2][c(1, 6, 3, 8, 5, 2, 7, 4)]
         plxy <- cbind(tmpx, tmpy, deparse.level = 0)
-        ids <- nrow(plxy)
     }
     else{
         plxy <- polygon_regular(n=n, phase=phase)
-        ids <- nrow(plxy)
     }
-    return(list(plxy=plxy, ids=ids))
+    return (plxy)
 }
 
 #' @importFrom grid grid.draw
 grid.star <- function(x=0.5, y=0.5,
-                      starshape=1, size=2,
+                      starshape=1,
                       angle=0, 
                       phase = 0,
                       gp = NULL,
@@ -123,7 +114,7 @@ grid.star <- function(x=0.5, y=0.5,
                       size.units="mm",
                       draw = TRUE, vp = NULL, ...){
     sg <- starGrob(x = x, y = y, 
-                   starshape = starshape, size = size, 
+                   starshape = starshape,
                    angle = angle, 
                    gp = gp, 
                    position.units = position.units,
