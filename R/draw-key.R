@@ -20,8 +20,9 @@ draw_key_star <- function(data, params, size){
         data$starshape <- translate_starshape(data$starshape)
     }
     starGrob(x=0.5, y=0.5,
-              starshape=data$starshape,
-              size=data$size*.pt/10, 
-              gp=gpar(fill=alpha(data$fill, data$alpha),
-                      col =alpha(data$colour, data$alpha)))
+             starshape=data$starshape,
+             gp=gpar(fill=alpha(data$fill, data$alpha),
+                     col =alpha(data$colour, data$alpha),
+                     fontsize = ((data$size %||% 1.5) * .pt + (data$starstroke %||% 0.5) * .starstroke / 2)/4,
+                     lwd = (data$starstroke %||% 0.5) * .starstroke / 2))
 }
