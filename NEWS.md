@@ -1,3 +1,7 @@
+# ggstar 0.0.6.1
+
++ add new shapes (heart, circle, Triangle star)
+
 # ggstar 0.0.6
 
 + update the method to calculate the coordinates of 1,2,3,4,9,10 shapes
