@@ -1,6 +1,6 @@
 Package: ggstar
 Title: Star Layer for 'ggplot2'
-Version: 0.0.6.0
+Version: 0.0.6.1
 Authors@R: 
     person(given = "Shuangbin",
            family = "Xu",
