@@ -3,6 +3,10 @@
 #' geom_star provides the siogon layer to easily discernible 
 #' starshapes for ggplot2, you can use it to create scatterplots.
 #'
+#' Note: the 'left-triangle' and 'right-triangle' are developed to
+#' plot the 'triangle-heatmap'. Their centers are not in their internal,
+#' but the center of hypotenuse.
+#'
 #' @eval rd_aesthetics("geom", "star")
 #' @inheritParams ggplot2::layer
 #' @param na.rm If `FALSE`, the default, missing values are removed with

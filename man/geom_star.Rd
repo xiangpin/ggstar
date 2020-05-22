@@ -62,6 +62,11 @@ the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 geom_star provides the siogon layer to easily discernible 
 starshapes for ggplot2, you can use it to create scatterplots.
 }
+\details{
+Note: the 'left-triangle' and 'right-triangle' are developed to
+plot the 'triangle-heatmap'. Their centers are not in their internal,
+but the center of hypotenuse.
+}
 \section{Aesthetics}{
 
 \code{geom_star()} understands the following aesthetics (required aesthetics are in bold):
