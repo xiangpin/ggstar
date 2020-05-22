@@ -20,16 +20,18 @@
 #' p
 geom_star <- function(mapping = NULL, 
                       data= NULL, 
-                      na.rm = FALSE, 
+                      na.rm = FALSE,
+                      stat = 'identity',
+                      position = 'identity',
                       show.legend = NA, 
                       inherit.aes = TRUE, 
                       ...){
     layer(data = data, 
           mapping = mapping, 
           geom = GeomStar,
-          stat = "identity",
-          position = 'identity',
-          params = list(na.rm=na.rm,...),
+          stat = stat,
+          position = position,
+          params = list(na.rm=na.rm, ...),
           show.legend = show.legend, 
           inherit.aes = inherit.aes)
 }
@@ -80,18 +82,31 @@ translate_starshape <- function(starshape){
 }
 
 starshape_table <- c(
-                 "pentagram" = 1,
-                 "magen david" = 2,
-                 "seven pointed star" = 3,
-                 "anise star" = 4,
-                 "regular pentagon" = 5,
-                 "hexagon" = 6,
-                 "regular heptagon" = 7,
-                 "regular octagon" = 8,
-                 "anise star2" = 9,
-                 "anise star3" = 10,
-                 "regular triangle" = 11,
-                 "rhombus" = 12)
+                 "pentagram"                = 1,
+                 "magen david"              = 2,
+                 "seven pointed star"       = 3,
+                 "anise star"               = 4,
+                 "regular pentagon"         = 5,
+                 "hexagon"                  = 6,
+                 "regular heptagon"         = 7,
+                 "regular octagon"          = 8,
+                 "anise star2"              = 9,
+                 "anise star3"              = 10,
+                 "regular triangle"         = 11,
+                 "rhombus"                  = 12,
+                 "square"                   = 13,
+                 "four-pointed star"        = 14,
+                 "circle"                   = 15,
+                 "heart"                    = 16,
+                 "left-triangle1"           = 17,
+                 "right-triangle1"          = 18,
+                 "left-triangle2"           = 19,
+                 "right-triangle2"          = 20,
+                 "rectangle"                = 21,
+                 "triangle star"            = 22,
+                 "regular triangle down"    = 23,
+                 "hexagonal star"           = 24,
+                 "ellipse"                  = 25)
 
 # reference ggplot2
 translate_starshape_string <- function(starshape_string){

@@ -17,16 +17,16 @@ ggname <- getFromNamespace("ggname", "ggplot2")
 #' p
 show_starshapes <- function(...){
     x <- y <- group <- NULL
-    data <- data.frame(x=rep(c(1:4),3),
-                       y=rep(1:3, each = 4, len = 12),
-                       group=letters[c(1:12)])
+    data <- data.frame(x=rep(c(1:5),5),
+                       y=rep(1:5, each = 5, len = 25),
+                       group=letters[seq_len(25)])
     p <- ggplot(data=data, aes(x=x,y=y)) +
          geom_star(aes(starshape=group),fill="red", size=3, show.legend=FALSE) +
-         geom_text(aes(label=names(starshape_table[c(1:12)])),
+         geom_text(aes(label=names(starshape_table[c(1:25)])),
                        nudge_y=0.3, size=3, fontface="bold.italic") +
-         geom_text(aes(label=as.character(c(1:12))), nudge_y=-0.2) + 
-         scale_starshape_manual(values=c(1:12)) +
-         xlim(0.5, 4.5) + ylim(0.5, 3.5) +
+         geom_text(aes(label=as.character(seq_len(25))), nudge_y=-0.2) + 
+         scale_starshape_manual(values=c(seq_len(25))) +
+         xlim(0.5, 5.5) + ylim(0.5, 5.5) +
          xlab(NULL) + ylab(NULL) +
          theme(axis.ticks=element_blank(),
                axis.text=element_blank(),...) 

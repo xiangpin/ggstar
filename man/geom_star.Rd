@@ -8,6 +8,8 @@ geom_star(
   mapping = NULL,
   data = NULL,
   na.rm = FALSE,
+  stat = "identity",
+  position = "identity",
   show.legend = NA,
   inherit.aes = TRUE,
   ...
@@ -36,6 +38,12 @@ from a \code{formula} (e.g. \code{~ head(.x, 10)}).}
 
 \item{na.rm}{If `FALSE`, the default, missing values are removed with
 a warning. If `TRUE`, missing values are silently removed.}
+
+\item{stat}{The statistical transformation to use on the data for this
+layer, as a string.}
+
+\item{position}{Position adjustment, either as a string, or the result of
+a call to a position adjustment function.}
 
 \item{show.legend}{logical. Should this layer be included in the legends?
 \code{NA}, the default, includes if any aesthetics are mapped.

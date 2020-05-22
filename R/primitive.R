@@ -10,8 +10,8 @@ starGrob <- function(x=0.5, y=0.5,
                                lwd=0.5),
                      position.units = "npc", 
                      size.units="mm", ...){
-    if (! all(starshape %in% seq_len(20))){
-        stop("the starshape should be one of 1 to 20 !")
+    if (! all(starshape %in% seq_len(25))){
+        stop("the starshape should be one of 1 to 25 !")
     }
     N <- length(x)
     stopifnot(length(y)==N)
@@ -48,10 +48,12 @@ starGrob <- function(x=0.5, y=0.5,
 starshape_ntab <- c(5, 6, 7, 8,
                     5, 6, 7, 8,
                     8, 8, 3, 4,
-                    4, 4, 100, 0,
-                    0, 0, 0, 3)
+                    4, 4, 50, 0,
+                    0, 0, 0, 0,
+                    0, 3, 3, 6,
+		    50)
 
-names(starshape_ntab) <- seq_len(20)
+names(starshape_ntab) <- seq_len(25)
 
 match_n <- function(starshape){
     n <- starshape_ntab[match(starshape,names(starshape_ntab))]
@@ -59,8 +61,8 @@ match_n <- function(starshape){
 }
 
 # index of starshape = aspect ratio (ar) 
-starshape_artab <- c(rep(1, 9),0.5, 1, 0.5, rep(1,8))
-names(starshape_artab) <- seq_len(20)
+starshape_artab <- c(rep(1, 9), 0.5, 1, 0.5, rep(1,12),0.5)
+names(starshape_artab) <- seq_len(25)
 
 match_ar <- function(starshape){
     ar <- starshape_artab[match(starshape,names(starshape_artab))]
@@ -71,7 +73,7 @@ match_ar <- function(starshape){
 build_polygenxy_id.lengths <- function(starshape, phase){
     # the edge numbers
     n <- match_n(starshape)
-    if (starshape %in% c(1, 2, 3, 4, 9, 10, 14)){
+    if (starshape %in% c(1, 2, 3, 4, 9, 10, 14, 22, 24)){
         phase2 <- phase + pi/n
         tmpplxy <- mapply(polygon_regular, 
                phase=c(phase, phase2), 
@@ -85,31 +87,38 @@ build_polygenxy_id.lengths <- function(starshape, phase){
         }else if (starshape==4){
             tmpplxy[[2]] <- 0.756 * tmpplxy[[2]]
         }else if (starshape==14){
-            tmpplxy[[2]] <- 0.3 * tmpplxy[[2]]
-        }else if (starshape==20){
-            tmpplxy[[2]] <- 1.8 * tmpplxy[[2]]
-        }
-        else{
+            tmpplxy[[2]] <- 0.35 * tmpplxy[[2]]
+        }else if (starshape==22){
+            tmpplxy[[2]] <- 0.2 * tmpplxy[[2]]
+        }else if (starshape==24){
+            tmpplxy[[2]] <- 0.26 * tmpplxy[[2]]
+        }else{
             tmpplxy[[2]] <- 0.5 * tmpplxy[[2]]
         }
-        tmpplxy <- lapply(tmpplxy,function(x)data.frame(x[-nrow(x),]))
+        tmpplxy <- lapply(tmpplxy,function(x)data.frame(x))
         plxy <- as.matrix(mapply(function(x,y){rbind(x,y)},tmpplxy[[1]],tmpplxy[[2]]))
         colnames(plxy) <- c("x", "y")
     }else if (starshape==16){
-        t <- seq(0, 2*pi, by=0.05)
-        plxy <- 0.045 *as.matrix(data.frame(x=16 * sin(t)^3,
+        t <- seq(0, 2*pi, by=0.08)
+        plxy <- 0.06 *as.matrix(data.frame(x=16 * sin(t)^3,
                      y=13*cos(t) - 5*cos(2*t) - 2*cos(3*t) - cos(4*t) + 2))
     }else if (starshape==13){
         phase <- phase + pi/n
         plxy <- polygon_regular(n=n, phase=phase)
     }else if (starshape==17){
-        plxy <- matrix(c(-1, 1, 1, 0.5, 0.5, -0.5),nrow=3)
-        colnames(plxy) <- c("x", "y")
+        plxy <- 1.2*matrix(c(-1, -1, 1, 0.5, -0.5, -0.5),nrow=3)
     }else if (starshape==18){
-        plxy <- matrix(c(-1,1,1,1,1,-1),nrow=3)
+        plxy <- 1.2*matrix(c(-1, 1, 1, 0.5, 0.5, -0.5),nrow=3) 
     }else if (starshape==19){
+        plxy <- matrix(c(-1,-1,1,1,-1,-1), nrow=3)
+    }else if (starshape==20){
+        plxy <- matrix(c(-1,1,1,1,1,-1), nrow=3)
+    }else if (starshape==21){
         plxy <- matrix(c(-1, 1, 1, -1,
 	            0.5, 0.5, -0.5, -0.5), nrow=4)
+    }else if (starshape==23){
+        phase <- phase + pi/n
+        plxy <- polygon_regular(n=n,phase=phase)
     }else{
         plxy <- polygon_regular(n=n, phase=phase)
     }
