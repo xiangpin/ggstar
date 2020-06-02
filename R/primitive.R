@@ -120,7 +120,7 @@ build_polygenxy_id.lengths <- function(starshape, phase){
         phase <- phase + pi/n
         plxy <- polygon_regular(n=n,phase=phase)
     }else{
-        plxy <- polygon_regular(n=n, phase=phase)
+        plxy <- 0.8*polygon_regular(n=n, phase=phase)
     }
     return (plxy)
 }
