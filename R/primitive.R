@@ -10,11 +10,12 @@ starGrob <- function(x=0.5, y=0.5,
                                lwd=0.5),
                      position.units = "npc", 
                      size.units="mm", ...){
-    if (! all(starshape %in% seq_len(25))){
-        stop("the starshape should be one of 1 to 25 !")
+    if (! all(starshape %in% seq_len(27))){
+        stop("the starshape should be one of 1 to 27 !")
     }
     N <- length(x)
     stopifnot(length(y)==N)
+    angle <- deg2rad(x=angle)
     if (!is.unit(x)){x <- unit(x, position.units)}
     if (!is.unit(y)){y <- unit(y, position.units)}
     xv <- convertX(x, position.units, TRUE)
@@ -44,6 +45,9 @@ starGrob <- function(x=0.5, y=0.5,
     return(grobs)
 }
 
+deg2rad <- function(x){x * pi / 180}
+rad2deg <- function(x){x * 180 / pi}
+
 # index of starshape = numbers of edge (n)
 starshape_ntab <- c(5, 6, 7, 8,
                     5, 6, 7, 8,
@@ -51,9 +55,9 @@ starshape_ntab <- c(5, 6, 7, 8,
                     4, 4, 50, 0,
                     0, 0, 0, 0,
                     0, 3, 3, 6,
-		    50)
+                    50, 3, 0)
 
-names(starshape_ntab) <- seq_len(25)
+names(starshape_ntab) <- seq_len(27)
 
 match_n <- function(starshape){
     n <- starshape_ntab[match(starshape,names(starshape_ntab))]
@@ -61,8 +65,8 @@ match_n <- function(starshape){
 }
 
 # index of starshape = aspect ratio (ar) 
-starshape_artab <- c(rep(1, 9), 0.5, 1, 0.5, rep(1,12),0.5)
-names(starshape_artab) <- seq_len(25)
+starshape_artab <- c(rep(1, 9), 0.5, 1, 0.5, rep(1,12),0.5, 0.3, 1)
+names(starshape_artab) <- seq_len(27)
 
 match_ar <- function(starshape){
     ar <- starshape_artab[match(starshape,names(starshape_artab))]
@@ -114,11 +118,17 @@ build_polygenxy_id.lengths <- function(starshape, phase){
     }else if (starshape==20){
         plxy <- matrix(c(-1,1,1,1,1,-1), nrow=3)
     }else if (starshape==21){
-        plxy <- matrix(c(-1, 1, 1, -1,
-	            0.5, 0.5, -0.5, -0.5), nrow=4)
-    }else if (starshape==23){
+        plxy <- 0.8 * matrix(c(-1, 1, 1, -1,
+	                           0.5, 0.5, -0.5, -0.5), nrow=4)
+    }else if (starshape==23 | starshape==26){
         phase <- phase + pi/n
-        plxy <- polygon_regular(n=n,phase=phase)
+        plxy <- 0.8*polygon_regular(n=n,phase=phase)
+    }else if (starshape==27){
+        plxy <- 0.7*data.frame(x=c(0, -0.25, -0.65, -0.5, -1.4, -0.5, -0.65, 
+                                   -0.25, 0, 0.25, 0.65, 0.5, 1.4, 0.5, 0.65, 0.25),
+                               y=c(1.4, 0.5, 0.65, 0.25, 0, -0.25, -0.65, -0.5,
+                                   -1.4, -0.5, -0.65, -0.25, 0, 0.25, 0.65, 0.5)) 
+        plxy <- as.matrix(plxy)
     }else{
         plxy <- 0.8*polygon_regular(n=n, phase=phase)
     }
