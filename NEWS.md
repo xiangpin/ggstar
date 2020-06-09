@@ -1,3 +1,7 @@
+# ggstar 0.0.6.2
+
++ add Thin triangle and other style anise star (20200605)
+
 # ggstar 0.0.6.1
 
 + add new shapes (heart, circle, Triangle star)
