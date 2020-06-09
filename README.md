@@ -91,5 +91,5 @@ browseVignettes("ggstar")
 # :sparkling\_heart: Contributing
 
 We welcome any contributions\! By participating in this project you
-agree to bide by the terms outlined in the [Contributor Code of
+agree to abide by the terms outlined in the [Contributor Code of
 Conduct](CONDUCT.md).
