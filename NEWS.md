@@ -1,3 +1,7 @@
+# ggstar 0.0.6.3
+
++ fix a bug, when `starshape` is NA in legend. (20200612)
+
 # ggstar 0.0.6.2
 
 + add Thin triangle and other style anise star (20200605)
