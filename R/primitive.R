@@ -124,8 +124,8 @@ build_polygenxy_id.lengths <- function(starshape, phase){
         phase <- phase + pi/n
         plxy <- 0.8*polygon_regular(n=n,phase=phase)
     }else if (starshape==27){
-        plxy <- 0.7*data.frame(x=c(0, -0.25, -0.65, -0.5, -1.4, -0.5, -0.65, 
-                                   -0.25, 0, 0.25, 0.65, 0.5, 1.4, 0.5, 0.65, 0.25),
+        plxy <- 0.7*data.frame(x=c(0, -0.25, -0.65, -0.5, -1.1, -0.5, -0.65, 
+                                   -0.25, 0, 0.25, 0.65, 0.5, 1.1, 0.5, 0.65, 0.25),
                                y=c(1.4, 0.5, 0.65, 0.25, 0, -0.25, -0.65, -0.5,
                                    -1.4, -0.5, -0.65, -0.25, 0, 0.25, 0.65, 0.5)) 
         plxy <- as.matrix(plxy)
