@@ -65,7 +65,7 @@ match_n <- function(starshape){
 }
 
 # index of starshape = aspect ratio (ar) 
-starshape_artab <- c(rep(1, 9), 0.5, 1, 0.5, rep(1,12),0.5, 0.3, 1)
+starshape_artab <- c(rep(1, 9), 0.5, 1, 0.5, rep(1,12),0.5, 0.18, 1)
 names(starshape_artab) <- seq_len(27)
 
 match_ar <- function(starshape){
