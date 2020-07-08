@@ -42,7 +42,7 @@ library(ggstar)
 
 `geom_star`
 
-```{r, fig.width=7, fig.height=6.5, fig.align="center", starshapes}
+```{r, fig.width=7, fig.height=6, fig.align="center", dev="svg", starshapes}
 p1 <- show_starshapes()
 p1
 ```
@@ -51,15 +51,17 @@ And the default is: `c(1, 2, 9, 4, 3, 5, 6, 11, 12)[seq_len(n)]`. `n` is the num
 
 # 2. Install
 
-`ggstar` hasn't been submitted on [CRAN](https://cran.r-project.org/), you can use the following to install it.
+`ggstar` has been submitted on [CRAN](https://cran.r-project.org/), you can use the following to install it.
 
 ```r
-# for devel
-if(!requireNamespace("devtools", quietly=TRUE)){
+# Release
+install.packages("ggstar")
+
+# Or for devel
+if(!requireNamespace("remotes", quietly=TRUE)){
     install.packages("remotes")
 }
 remotes::install_github("xiangpin/ggstar")
-# for release
 ```
 
 # 3. Usage
@@ -68,11 +70,11 @@ remotes::install_github("xiangpin/ggstar")
 
 ## 3.1 Cartesian coordinates
 
-```{r, fig.width=6, fig.height=5, fig.align="center", sizeshape}
+```{r, fig.width=6, fig.height=5, fig.align="center", dev="svg", sizeshape}
 library(ggplot2)
 library(ggstar)
 p2 <- ggplot(data=iris, aes(x=Sepal.Width,y=Sepal.Length)) + 
-      geom_star(aes(starshape=Species, color=Species), size=2) +
+      geom_star(aes(starshape=Species, color=Species), size=2.5) +
       scale_fill_manual(values=c("#E41A1C", "#377EB8", "#4DAF4A")) +
       theme(legend.spacing.y = unit(0.02, "cm"))
 p2
@@ -80,9 +82,9 @@ p2
 
 ## 3.2 Polar coordinates
 
-```{r, fig.width=6, fig.height=5.2, fig.align="center", polarcoord}
+```{r, fig.width=6, fig.height=5.2, fig.align="center", dev="svg", polarcoord}
 p3 <- ggplot(data=mtcars, aes(x=wt, y=mpg)) +
-      geom_star(aes(fill=cyl), size=2) +
+      geom_star(aes(fill=cyl), size=2.5) +
       scale_fill_gradient(low="blue", high="red") +
       coord_polar() +
       theme(panel.border=element_blank(),
