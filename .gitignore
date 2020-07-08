@@ -2,3 +2,4 @@
 .RData
 .Rhistory
 .Rproj.user
+vignettes/*.html
