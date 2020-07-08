@@ -1,3 +1,7 @@
+# ggstar 0.0.6.4
+
++ add new shapes (28, 29, 30). (20200708, Wed)
+
 # ggstar 0.0.6.3
 
 + fix a bug, when `starshape` is NA in legend. (20200612)
