@@ -2,7 +2,7 @@
 % Please edit documentation in R/scale-identity.R
 \name{scale_starshape_identity}
 \alias{scale_starshape_identity}
-\title{Use values without scaling}
+\title{Use values without scaling for ggstar}
 \usage{
 scale_starshape_identity(..., guide = "none")
 }
@@ -101,7 +101,7 @@ transformation with \code{\link[scales:trans_new]{scales::trans_new()}}.}
 \item{guide}{Guide to use for this scale. Defaults to `"none"`.}
 }
 \description{
-Use values without scaling
+Use values without scaling for ggstar
 }
 \seealso{
 \code{\link[ggplot2]{scale_shape_identity}}
