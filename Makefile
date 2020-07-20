@@ -28,6 +28,8 @@ crancheck: rd build1
 	cd ..;\
 	Rscript -e 'rcmdcheck::rcmdcheck("$(PKGNAME)_$(PKGVERS).tar.gz", args="--as-cran")'
 
+debug: rd build1 install
+
 clean:
 	cd ..;\
 	$(RM) -r $(PKGNAME).Rcheck/
