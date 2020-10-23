@@ -53,7 +53,7 @@ Total starshapes:
 
 ![](./inst/extdata/starshapes.png)
 
-```r
+```{r, eval=FALSE, echo=FALSE}
 library(ggplot2)
 library(ggstar)
 p <- ggplot(data=mtcars, 
@@ -64,9 +64,9 @@ p <- ggplot(data=mtcars,
 p
 ```
 
-![](./inst/extdata/figure1.png)
+<!-- ![](./inst/extdata/figure1.png) -->
 
-```r
+```{r, eval=FALSE, echo=FALSE}
 p2 <- ggplot(data=iris, 
              mapping=aes(x=Sepal.Length, 
                          y=Sepal.Width, 
@@ -75,9 +75,9 @@ p2 <- ggplot(data=iris,
 p2
 ```
 
-![](./inst/extdata/figure2.png)
+<!-- ![](./inst/extdata/figure2.png) -->
 
-```r
+```{r, eval=FALSE, echo=FALSE}
 p3 <- ggplot(data=iris,
              mapping=aes(x=Sepal.Length,
                          y=Sepal.Width,
@@ -87,7 +87,7 @@ p3 <- ggplot(data=iris,
 p3
 ```
 
-![](./inst/extdata/figure3.png)
+<!-- ![](./inst/extdata/figure3.png) -->
 
 # :book: Vignette
 
