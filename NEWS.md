@@ -1,6 +1,7 @@
 # ggstar 0.0.9.1
 
 + next new development version before next release version. (20200710, Fri)
++ `color` to `fill` in vignettes. (20201023, Fri)
 
 # ggstar 0.0.9
 
