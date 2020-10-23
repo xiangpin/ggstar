@@ -42,7 +42,7 @@ library(ggstar)
 
 `geom_star`
 
-```{r, fig.width=7, fig.height=6, fig.align="center", dev="svg", starshapes}
+```{r, fig.width=7, fig.height=6, fig.align="center", dpi=300, starshapes}
 p1 <- show_starshapes()
 p1
 ```
@@ -70,7 +70,7 @@ remotes::install_github("xiangpin/ggstar")
 
 ## 3.1 Cartesian coordinates
 
-```{r, fig.width=6, fig.height=5, fig.align="center", dev="svg", sizeshape}
+```{r, fig.width=6, fig.height=5, fig.align="center", dpi=300, sizeshape}
 library(ggplot2)
 library(ggstar)
 p2 <- ggplot(data=iris, aes(x=Sepal.Width,y=Sepal.Length)) + 
@@ -82,7 +82,7 @@ p2
 
 ## 3.2 Polar coordinates
 
-```{r, fig.width=6, fig.height=5.2, fig.align="center", dev="svg", polarcoord}
+```{r, fig.width=6, fig.height=5.2, fig.align="center", dpi=300, polarcoord}
 p3 <- ggplot(data=mtcars, aes(x=wt, y=mpg)) +
       geom_star(aes(fill=cyl), size=2.5) +
       scale_fill_gradient(low="blue", high="red") +
