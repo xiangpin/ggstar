@@ -42,3 +42,11 @@ bignore:
 
 gignore:
 	Rscript -e 'usethis::use_git_ignore(c(".DS_Store", ".RData", ".Rhistory", ".Rproj.user"))'
+
+update:
+	git fetch --all;\
+	git checkout master;\
+	git merge origin/master
+
+push:
+	git push origin master
