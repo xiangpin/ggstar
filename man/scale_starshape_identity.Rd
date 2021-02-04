@@ -73,7 +73,7 @@ scales, which always use \code{\link[scales:rescale]{scales::rescale()}}.}
 \item The default (\code{\link[scales:oob]{scales::censor()}}) replaces out of
 bounds values with \code{NA}.
 \item \code{\link[scales:oob]{scales::squish()}} for squishing out of bounds values into range.
-\item \code{\link[scales:oob]{scales::squish_infinite()}} for squishing infitite values into range.
+\item \code{\link[scales:oob]{scales::squish_infinite()}} for squishing infinite values into range.
 }}
     \item{\code{expand}}{For position scales, a vector of range expansion constants used to add some
 padding around the data to ensure that they are placed some distance

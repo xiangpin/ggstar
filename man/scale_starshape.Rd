@@ -7,11 +7,9 @@
 \alias{scale_starshape_continuous}
 \title{Scales for starshapes, aka glyphs}
 \usage{
-scale_starshape(default = TRUE, ...)
+scale_starshape(..., default = TRUE)
 }
 \arguments{
-\item{default}{should the starshapes be default?}
-
 \item{...}{
   Arguments passed on to \code{\link[ggplot2:discrete_scale]{ggplot2::discrete_scale}}
   \describe{
@@ -63,6 +61,8 @@ The default, \code{TRUE}, uses the levels that appear in the data;
 \code{\link[ggplot2:guides]{guides()}} for more information.}
     \item{\code{super}}{The super class to use for the constructed scale}
   }}
+
+\item{default}{should the starshapes be default?}
 }
 \description{
 `scale_starshape` maps discrete variables to six easily discernible starshapes.
