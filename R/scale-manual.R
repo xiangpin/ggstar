@@ -7,6 +7,7 @@
 #'   given `na.value`.
 #' @inheritDotParams ggplot2::discrete_scale -expand -position -aesthetics
 #' @name scale_manual
+#' @return starshape scale constructor
 #' @aliases NULL
 NULL
 
