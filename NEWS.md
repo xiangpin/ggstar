@@ -1,3 +1,7 @@
+# ggstar 1.0.1
+
++ don't use svg dev. (20200210, Wed)
+
 # ggstar 0.0.9.1
 
 + next new development version before next release version. (20200710, Fri)
