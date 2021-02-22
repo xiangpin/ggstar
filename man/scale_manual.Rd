@@ -64,6 +64,9 @@ The default, \code{TRUE}, uses the levels that appear in the data;
     \item{\code{super}}{The super class to use for the constructed scale}
   }}
 }
+\value{
+starshape scale constructor
+}
 \description{
 Create your own discrete scale
 }

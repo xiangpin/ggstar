@@ -12,6 +12,7 @@
 #' @param na.rm If `FALSE`, the default, missing values are removed with
 #'     a warning. If `TRUE`, missing values are silently removed.
 #' @param ... Other arguments passed on to \code{\link[ggplot2]{layer}}.  
+#' @return polygonal layer
 #' @importFrom ggplot2 layer
 #' @author Shuangbin Xu
 #' @export

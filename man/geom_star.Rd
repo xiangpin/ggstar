@@ -58,6 +58,9 @@ the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 
 \item{...}{Other arguments passed on to \code{\link[ggplot2]{layer}}.}
 }
+\value{
+polygonal layer
+}
 \description{
 geom_star provides the siogon layer to easily discernible 
 starshapes for ggplot2, you can use it to create scatterplots.

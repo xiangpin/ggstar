@@ -100,6 +100,9 @@ transformation with \code{\link[scales:trans_new]{scales::trans_new()}}.}
 
 \item{guide}{Guide to use for this scale. Defaults to `"none"`.}
 }
+\value{
+identical (default) starshape scale constructor
+}
 \description{
 Use values without scaling for ggstar
 }
