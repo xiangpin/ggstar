@@ -1,6 +1,6 @@
 Package: ggstar
-Title: Star Layer for 'ggplot2'
-Version: 1.0.1
+Title: Multiple Geometric Shape Layer for 'ggplot2'
+Version: 1.0.1.990
 Authors@R: 
     person(given = "Shuangbin",
            family = "Xu",
@@ -8,7 +8,8 @@ Authors@R:
            email = "xshuangbin@163.com",
            comment = c(ORCID="0000-0003-3513-5362"))
 Description: To create the regular polygon layer for easily discernible shapes, 
-             we developed the package, it can be easily used if you know the 'ggplot2'.
+             we developed the package, it is like the 'geom_point' of 'ggplot2'.
+             It can be used to draw the scatter plot.
 Depends: 
   R (>= 3.5)
 Imports:
