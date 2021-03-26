@@ -11,7 +11,8 @@
 [![](https://cranlogs.r-pkg.org/badges/last-week/ggstar?color=green)](https://cranlogs.r-pkg.org/downloads/total/last-week/ggstar)
 
 To create the regular polygon layer for easily discernible shapes, we
-developed the package, it can be easily used if you know the ‘ggplot2’.
+developed the package, it is like the ‘geom\_point’ of ‘ggplot2’. It can
+be used to draw the scatter plot.
 
 # :writing\_hand: Author
 
