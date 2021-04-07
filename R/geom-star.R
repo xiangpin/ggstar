@@ -11,7 +11,17 @@
 #' @param na.rm If `FALSE`, the default, missing values are removed with
 #'     a warning. If `TRUE`, missing values are silently removed.
 #' @param ... Other arguments passed on to \code{\link[ggplot2]{layer}}.  
-#' @return polygonal layer
+#' @details
+#'  \itemize{
+#'     \item \code{starshape} the shape of point, default is 1 (star shape).
+#'     \item \code{starstroke} control the thickness of margin of point, default is 0.5.
+#'     \item \code{size} the size of point, default is 1.5.
+#'     \item \code{colour} the colour of margin, default is 'black'.
+#'     \item \code{fill} the colour of fill, default is NA.
+#'     \item \code{alpha} the transparency of fill, default is 1.
+#'     \item \code{angle} control the angle of rotation of point, default is 0.
+#'  }
+#' @return polygonal point layer
 #' @importFrom ggplot2 layer
 #' @author Shuangbin Xu
 #' @export

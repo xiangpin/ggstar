@@ -65,8 +65,8 @@ The default, \code{TRUE}, uses the levels that appear in the data;
 \item{default}{should the starshapes be default?}
 }
 \description{
-`scale_starshape` maps discrete variables to six easily discernible starshapes.
-If you have more than 6 levels, you will get a warning message, and the
+`scale_starshape` maps discrete variables to nine easily discernible shapes ('starshapes').
+If you have more than 9 levels, you will get a warning message, and the
 seventh and subsequence levels will not appear on the plot. Use
 [scale_starshape_manual()] to supply your own values. You can not map
 a continuous variable to shape.
