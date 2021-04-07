@@ -1,3 +1,7 @@
+# ggstar 1.0.2
+
++ update the man and help. (2021-04-07, Wed)
+
 # ggstar 1.0.1
 
 + changed default starshapes. (2021-02-04, Thu)
