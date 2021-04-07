@@ -1,5 +1,10 @@
+# ggstar 1.0.2.990
+
++ bump new development version. (2021-04-07, Wed)
+
 # ggstar 1.0.2
 
++ new version to `CRAN`. (2021-04-07, Wed)
 + update the man and help. (2021-04-07, Wed)
 
 # ggstar 1.0.1
