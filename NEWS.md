@@ -1,6 +1,9 @@
-# ggstar 1.0.2.990
+# ggstar 1.0.2.991
 
 + bump new development version. (2021-04-07, Wed)
++ supporting `subset` in `aes`. (2021-06-28, Mod)
+  - This is useful to display the data that meets some conditions.
+    - `ggtree(tr) + geom_star(mapping=aes(subset=isTip))`
 
 # ggstar 1.0.2
 
