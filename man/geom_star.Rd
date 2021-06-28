@@ -77,6 +77,7 @@ but the center of hypotenuse.
     \item \code{fill} the colour of fill, default is NA.
     \item \code{alpha} the transparency of fill, default is 1.
     \item \code{angle} control the angle of rotation of point, default is 0.
+    \item \code{subset} subset the data frame which meet conditions to display.
  }
 }
 \section{Aesthetics}{
@@ -94,6 +95,7 @@ but the center of hypotenuse.
   \item \code{size}
   \item \code{starshape}
   \item \code{starstroke}
+  \item \code{subset}
 }
 Learn more about setting these aesthetics in \code{vignette("ggplot2-specs")}.
 }

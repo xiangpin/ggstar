@@ -20,6 +20,7 @@
 #'     \item \code{fill} the colour of fill, default is NA.
 #'     \item \code{alpha} the transparency of fill, default is 1.
 #'     \item \code{angle} control the angle of rotation of point, default is 0.
+#'     \item \code{subset} subset the data frame which meet conditions to display.
 #'  }
 #' @return polygonal point layer
 #' @importFrom ggplot2 layer
@@ -64,7 +65,12 @@ GeomStar <- ggproto("GeomStar",
                     non_missing_aes = c("size", "starshape"),
                     default_aes = aes(size = 1.5, colour = "black", starshape=1, 
                                       angle=0, fill = NA, alpha = 1,  
-                                      phase=0, starstroke=0.5),
+                                      phase=0, starstroke=0.5, subset=NULL),
+                    setup_data = function(data, params){
+                        if (is.null(data$subset))
+                            return(data)
+                        data[which(data$subset),]
+                    },
                     draw_key = draw_key_star,
                     draw_panel=function(data, panel_params, coord){
                         if (!is.numeric(data$starshape)){
