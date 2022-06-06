@@ -35,20 +35,24 @@ scale_starshape_continuous <- function(...) {
   stop("A continuous variable can not be mapped to starshape", call. = FALSE)
 }               
 
+#' starshape palette (discrete)
+#' @param default should starshapes be reorder (1, 13, 15, 11, 12, 14, 29, 2, 27) or not?
+#' @export
 starshape_pal <- function(default=TRUE){
     force(default)
     function(n){
-    if (n > 9) {
-        msg <- paste("The starshape palette can deal with a maximum of 9 discrete ",
-                     "values because more than 9 becomes difficult to discriminate; ",
-                     "you have ", n, ". Consider specifying starshapes manually if you ",
-                     "must have them.", sep = "")
-        warning(paste(strwrap(msg), collapse = "\n"), call. = FALSE)
+        if (n > 9) {
+            msg <- paste("The starshape palette can deal with a maximum of 9 discrete ",
+                         "values because more than 9 becomes difficult to discriminate; ",
+                         "you have ", n, ". Consider specifying starshapes manually if you ",
+                         "must have them.", sep = "")
+            warning(paste(strwrap(msg), collapse = "\n"), call. = FALSE)
+        }
+        if (default){
+            res <- c(1, 13, 15, 11, 12, 14, 29, 2, 27)[seq_len(n)]
+        }else{
+            res <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)[seq_len(n)]
+        }
+        return (res)
     }
-    if (default){
-        c(1, 13, 15, 11, 12, 14, 29, 2, 27)[seq_len(n)]
-    }else{
-        c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)[seq_len(n)]
-    }
-}
 }
