@@ -58,3 +58,5 @@ rd_aesthetics <- getFromNamespace("rd_aesthetics", "ggplot2")
 "%||%" <- function(a, b) {
     if (!is.null(a)) a else b
 }
+
+#' @import cli

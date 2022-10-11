@@ -1,3 +1,7 @@
+# ggstar 1.0.3.991
+
++ import `cli` and update some man to be compatible with ggplot2v3.4.0 (2022-10-11, Tue)
+
 # ggstar 1.0.3
 
 + adjust the default order of `starshape`, now is 

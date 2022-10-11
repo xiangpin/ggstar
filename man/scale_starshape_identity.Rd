@@ -49,6 +49,7 @@ number of breaks given by the transformation.}
 \item \code{waiver()} for the default labels computed by the
 transformation object
 \item A character vector giving labels (must be same length as \code{breaks})
+\item An expression vector (must be the same length as breaks). See ?plotmath for details.
 \item A function that takes the breaks as input and returns labels
 as output. Also accepts rlang \link[rlang:as_function]{lambda} function
 notation.
@@ -67,8 +68,8 @@ If the purpose is to zoom, use the limit argument in the coordinate system
 }}
     \item{\code{rescaler}}{A function used to scale the input values to the
 range [0, 1]. This is always \code{\link[scales:rescale]{scales::rescale()}}, except for
-diverging and n colour gradients (i.e., \code{\link[ggplot2:scale_gradient]{scale_colour_gradient2()}},
-\code{\link[ggplot2:scale_gradient]{scale_colour_gradientn()}}). The \code{rescaler} is ignored by position
+diverging and n colour gradients (i.e., \code{\link[ggplot2:scale_colour_gradient2]{scale_colour_gradient2()}},
+\code{\link[ggplot2:scale_colour_gradientn]{scale_colour_gradientn()}}). The \code{rescaler} is ignored by position
 scales, which always use \code{\link[scales:rescale]{scales::rescale()}}. Also accepts rlang
 \link[rlang:as_function]{lambda} function notation.}
     \item{\code{oob}}{One of:
