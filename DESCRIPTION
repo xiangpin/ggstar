@@ -1,6 +1,6 @@
 Package: ggstar
 Title: Multiple Geometric Shape Point Layer for 'ggplot2'
-Version: 1.0.3.991
+Version: 1.0.4
 Authors@R: 
     person(given = "Shuangbin",
            family = "Xu",

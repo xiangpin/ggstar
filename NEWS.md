@@ -1,4 +1,4 @@
-# ggstar 1.0.3.991
+# ggstar 1.0.4
 
 + import `cli` and update some man to be compatible with ggplot2v3.4.0 (2022-10-11, Tue)
 
