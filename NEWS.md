@@ -1,7 +1,7 @@
 # ggstar 1.0.4.001
 
-+ add `semicircle` shape. (2023-07-26, Wed)
- + https://github.com/xiangpin/ggstar/issues/4
++ add `semicircle` shape. (2023-07-26, Wed, @lch14forever, #4)
+  - <https://github.com/xiangpin/ggstar/issues/4>
 + add `scale_angle_manual`. (2023-07-26, Wed)
 
 # ggstar 1.0.4
