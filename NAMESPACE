@@ -3,6 +3,7 @@
 export(GeomStar)
 export(draw_key_star)
 export(geom_star)
+export(scale_angle_manual)
 export(scale_starshape)
 export(scale_starshape_continuous)
 export(scale_starshape_discrete)

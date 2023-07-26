@@ -25,9 +25,11 @@ draw_key_star <- function(data, params, size){
     }else{
         starGrob(x=0.5, y=0.5,
                  starshape=data$starshape,
+                 angle = data$angle,
                  gp=gpar(fill=alpha(data$fill, data$alpha),
                          col =alpha(data$colour, data$alpha),
                          fontsize = ((data$size %||% 1.5) * .pt + (data$starstroke %||% 0.5) * .starstroke / 2)/5,
-                         lwd = (data$starstroke %||% 0.5) * .starstroke / 2))
+                         lwd = (data$starstroke %||% 0.5) * .starstroke / 2)
+        )
     }
 }

@@ -78,6 +78,10 @@ GeomStar <- ggproto("GeomStar",
                             data$starshape <- translate_starshape(data$starshape)
                         }
                         coords <- coord$transform(data, panel_params)
+                        if (!is.numeric(coords$angle)){
+                            coords$angle <- 0
+                        }
+
                         grobs <- starGrob(x=coords$x,
                                           y=coords$y,
                                           gp=gpar(fill = alpha(coords$fill, coords$alpha),

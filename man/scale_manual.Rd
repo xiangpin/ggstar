@@ -2,17 +2,14 @@
 % Please edit documentation in R/scale-manual.R
 \name{scale_manual}
 \alias{scale_starshape_manual}
+\alias{scale_angle_manual}
 \title{Create your own discrete scale}
 \usage{
-scale_starshape_manual(values, ...)
+scale_starshape_manual(..., values, aesthetics = "starshape")
+
+scale_angle_manual(..., values, aesthetics = "angle")
 }
 \arguments{
-\item{values}{a set of aesthetic values to map data values to. If this
-is a named vector, then the values will be matched based on the names.
-If unnamed, values will be matched in order (usually alphabetical) with
-the limits of the scale. Any data values that don't match will be
-given `na.value`.}
-
 \item{...}{
   Arguments passed on to \code{\link[ggplot2:discrete_scale]{ggplot2::discrete_scale}}
   \describe{
@@ -67,6 +64,14 @@ The default, \code{TRUE}, uses the levels that appear in the data;
 \code{\link[ggplot2:guides]{guides()}} for more information.}
     \item{\code{super}}{The super class to use for the constructed scale}
   }}
+
+\item{values}{a set of aesthetic values to map data values to. If this
+is a named vector, then the values will be matched based on the names.
+If unnamed, values will be matched in order (usually alphabetical) with
+the limits of the scale. Any data values that don't match will be
+given `na.value`.}
+
+\item{aesthetics}{The names of the aesthetics that this scale works with.}
 }
 \value{
 starshape scale constructor

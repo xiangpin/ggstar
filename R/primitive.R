@@ -41,6 +41,7 @@ starGrob <- function(x=0.5, y=0.5,
                   SIMPLIFY = FALSE)
     allx <- do.call("unit.c", lapply(lxy, "[[", 1))
     ally <- do.call("unit.c", lapply(lxy, "[[", 2))
+    
     grobs <- polygonGrob(allx, ally, id.lengths = vertices, gp = gp, ...)
     return(grobs)
 }
@@ -143,7 +144,9 @@ build_polygenxy_id.lengths <- function(starshape, phase){
         plxy <- as.matrix(plxy)
     }else if (starshape==31){
         plxy <- polygon_regular(n=n+1, phase=phase)
+        endxy <- matrix(apply(plxy[c(nrow(plxy)/2, nrow(plxy)/2+1),], 2, mean), nrow = 1)
         plxy <- plxy[1:(nrow(plxy)/2), ]
+        plxy <- rbind(plxy, endxy)
     }
     else{
         plxy <- 0.8*polygon_regular(n=n, phase=phase)
