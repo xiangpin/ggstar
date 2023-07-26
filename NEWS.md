@@ -1,3 +1,9 @@
+# ggstar 1.0.4.001
+
++ add `semicircle` shape. (2023-07-26, Wed)
+ + https://github.com/xiangpin/ggstar/issues/4
++ add `scale_angle_manual`. (2023-07-26, Wed)
+
 # ggstar 1.0.4
 
 + import `cli` and update some man to be compatible with ggplot2v3.4.0 (2022-10-11, Tue)
