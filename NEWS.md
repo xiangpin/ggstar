@@ -1,6 +1,8 @@
-# ggstar 1.0.4.001
+# ggstar 1.0.4.002
 
-+ add `semicircle` shape. (2023-07-26, Wed, @lch14forever, #4)
++ add new shape (starshape = 32). (2024-04-07, Sun, @brunomioto, #5)
+  - <https://github.com/xiangpin/ggstar/issues/5>
++ add `semicircle` shape (starshape = 31). (2023-07-26, Wed, @lch14forever, #4)
   - <https://github.com/xiangpin/ggstar/issues/4>
 + add `scale_angle_manual`. (2023-07-26, Wed)
 
