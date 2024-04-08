@@ -10,8 +10,8 @@ starGrob <- function(x=0.5, y=0.5,
                                lwd=0.5),
                      position.units = "npc", 
                      size.units="mm", ...){
-    if (! all(starshape %in% seq_len(31))){
-        stop("the starshape should be one of 1 to 31 !")
+    if (! all(starshape %in% seq_len(32))){
+        stop("the starshape should be one of 1 to 32 !")
     }
     N <- length(x)
     stopifnot(length(y)==N)
@@ -57,9 +57,9 @@ starshape_ntab <- c(5, 6, 7, 8,
                     0, 0, 0, 0,
                     0, 3, 3, 6,
                     50, 3, 0, 4,
-                    0, 0, 50)
+                    0, 0, 50, 50)
 
-names(starshape_ntab) <- seq_len(31)
+names(starshape_ntab) <- seq_len(32)
 
 match_n <- function(starshape){
     n <- starshape_ntab[match(starshape,names(starshape_ntab))]
@@ -67,8 +67,8 @@ match_n <- function(starshape){
 }
 
 # index of starshape = aspect ratio (ar) 
-starshape_artab <- c(rep(1, 9), 0.5, 1, 0.5, rep(1,12),0.5, 0.18, 1, 1, 1, 1,1)
-names(starshape_artab) <- seq_len(31)
+starshape_artab <- c(rep(1, 9), 0.5, 1, 0.5, rep(1,12),0.5, 0.18, 1, 1, 1, 1,1,1)
+names(starshape_artab) <- seq_len(32)
 
 match_ar <- function(starshape){
     ar <- starshape_artab[match(starshape,names(starshape_artab))]
@@ -147,8 +147,14 @@ build_polygenxy_id.lengths <- function(starshape, phase){
         endxy <- matrix(apply(plxy[c(nrow(plxy)/2, nrow(plxy)/2+1),], 2, mean), nrow = 1)
         plxy <- plxy[1:(nrow(plxy)/2), ]
         plxy <- rbind(plxy, endxy)
-    }
-    else{
+    }else if (starshape == 32){
+        phase <- pi/2
+        plxy <- 0.85*polygon_regular(n = n+1, phase = phase)
+        endxy1 <- matrix(apply(plxy[c(nrow(plxy)/2, nrow(plxy)/2+1),], 2, mean), nrow = 1)
+        endxy2 <- matrix(c(max(plxy[,1]), max(plxy[,2]), min(plxy[,1]), max(plxy[,2])), ncol=2, byrow=T)
+        plxy <- plxy[seq(nrow(plxy)/2),]
+        plxy <- rbind(plxy, endxy1, endxy2)
+    }else{
         plxy <- 0.8*polygon_regular(n=n, phase=phase)
     }
     return (plxy)

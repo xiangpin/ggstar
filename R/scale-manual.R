@@ -5,7 +5,7 @@
 #'   If unnamed, values will be matched in order (usually alphabetical) with
 #'   the limits of the scale. Any data values that don't match will be
 #'   given `na.value`.
-#' @param aesthetics The names of the aesthetics that this scale works with.
+#' @param aesthetic The names of the aesthetics that this scale works with.
 #' @inheritDotParams ggplot2::discrete_scale -expand -position -aesthetics
 #' @name scale_manual
 #' @return starshape scale constructor
@@ -14,8 +14,8 @@ NULL
 
 #' @rdname scale_manual
 #' @export
-scale_starshape_manual <- function(..., values, aesthetics = 'starshape'){
-    manual_scale(aesthetics, values, ...)
+scale_starshape_manual <- function(..., values, aesthetic = 'starshape'){
+    manual_scale(aesthetic = aesthetic, values = values, ...)
 }
 
 #' @rdname scale_manual
@@ -23,9 +23,9 @@ scale_starshape_manual <- function(..., values, aesthetics = 'starshape'){
 scale_angle_manual <- function(
     ...,
     values,
-    aesthetics = "angle"
+    aesthetic = "angle"
     ){
-    manual_scale(aesthetics, values, ...)
+    manual_scale(aesthetic = aesthetic, values = values, ...)
 }
 
 #' @importFrom utils getFromNamespace

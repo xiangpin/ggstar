@@ -7,7 +7,7 @@
 #' @return identical (default) starshape scale constructor
 #' @export
 scale_starshape_identity <- function(..., guide = "none") {
-    sc <- continuous_scale("starshape", "identity", scales::identity_pal(), ..., guide = guide,
+    sc <- continuous_scale(aesthetics="starshape", palette=scales::identity_pal(), transform="identity", ..., guide = guide,
                            super = ScaleContinuousIdentity)
     sc
 }

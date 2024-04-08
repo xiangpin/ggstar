@@ -12,7 +12,7 @@
 #' @importFrom ggplot2 discrete_scale
 #' @export
 scale_starshape <- function(..., default=TRUE){
-    discrete_scale("starshape", "starshape_d", starshape_pal(default), ...)
+    discrete_scale("starshape", palette = starshape_pal(default), ...)
 }
 
 #' @rdname scale_starshape

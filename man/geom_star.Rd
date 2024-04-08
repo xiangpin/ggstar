@@ -88,15 +88,15 @@ but the center of hypotenuse.
 
 \code{geom_star()} understands the following aesthetics (required aesthetics are in bold):
 \itemize{
-  \item \strong{\code{x}}
-  \item \strong{\code{y}}
-  \item \code{alpha}
+  \item \strong{\code{\link[=aes_position]{x}}}
+  \item \strong{\code{\link[=aes_position]{y}}}
+  \item \code{\link[=aes_colour_fill_alpha]{alpha}}
   \item \code{angle}
-  \item \code{colour}
-  \item \code{fill}
-  \item \code{group}
+  \item \code{\link[=aes_colour_fill_alpha]{colour}}
+  \item \code{\link[=aes_colour_fill_alpha]{fill}}
+  \item \code{\link[=aes_group_order]{group}}
   \item \code{phase}
-  \item \code{size}
+  \item \code{\link[=aes_linetype_size_shape]{size}}
   \item \code{starshape}
   \item \code{starstroke}
   \item \code{subset}
