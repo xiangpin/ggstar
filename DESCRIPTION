@@ -18,7 +18,8 @@ Imports:
   ggplot2,
   scales,
   gridExtra,
-  cli
+  cli,
+  rlang
 Suggests:
   knitr,
   markdown,
@@ -29,4 +30,4 @@ Encoding: UTF-8
 URL: https://github.com/xiangpin/ggstar/
 BugReports: https://github.com/xiangpin/ggstar/issues
 VignetteBuilder: knitr
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2

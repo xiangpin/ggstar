@@ -6,13 +6,15 @@
 #' developed to plot the 'triangle-heatmap'. Their centers are not in their internal,
 #' but the center of hypotenuse.
 #'
-#' @eval rd_aesthetics("geom", "star")
 #' @inheritParams ggplot2::layer
 #' @param na.rm If `FALSE`, the default, missing values are removed with
 #'     a warning. If `TRUE`, missing values are silently removed.
 #' @param ... Other arguments passed on to \code{\link[ggplot2]{layer}}.  
-#' @details
+#' @details Aesthetics \code{geom_star} understands the following aesthetics. Required
+#' aesthetics are displayed in bold and defaults are displayed for optional aesthetics:
 #'  \itemize{
+#'     \item \strong{\code{x}}.
+#'     \item \strong{\code{y}}.
 #'     \item \code{starshape} the shape of point, default is 1 (star shape).
 #'     \item \code{starstroke} control the thickness of margin of point, default is 0.5.
 #'     \item \code{size} the size of point, default is 1.5.
