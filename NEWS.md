@@ -1,5 +1,7 @@
-# ggstar 1.0.4.002
+# ggstar 1.0.4.003
 
++ add `geom_star_interactive` which can work with `ggiraph`. (2025-08-05, Tue, @aymennasri, #7)
+  - <https://github.com/xiangpin/ggstar/issues/7>
 + add new shape (starshape = 32). (2024-04-07, Sun, @brunomioto, #5)
   - <https://github.com/xiangpin/ggstar/issues/5>
 + add `semicircle` shape (starshape = 31). (2023-07-26, Wed, @lch14forever, #4)
