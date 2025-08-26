@@ -42,6 +42,9 @@ GeomInteractiveStar <- ggproto(
   draw_key = interactive_geom_draw_key, 
   draw_panel = function(self, data, panel_params, coord, ..., .ipar = IPAR_NAMES){
     zz <- GeomStar$draw_panel(data, panel_params, coord, ...)
+    if (!.check_ipar_params(data)){
+      return(zz)
+    }
     coords <- coord$transform(data, panel_params)
     grobs <- add_interactive_attrs(zz, coords, ipar = .ipar)
     grobs <- .adjust_iparvalue_length(grobs)
@@ -64,4 +67,8 @@ GeomInteractiveStar <- ggproto(
      x$`.interactive` <- ip
   } 
   return(x)
+}
+
+.check_ipar_params <- function(x){
+  any(colnames(x) %in% IPAR_NAMES)
 }
