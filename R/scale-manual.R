@@ -28,7 +28,7 @@ scale_angle_manual <- function(
     manual_scale(aesthetic = aesthetic, values = values, ...)
 }
 
-#' @importFrom ggplot2 discrete_scale is_waiver waiver
+#' @importFrom ggplot2 discrete_scale waiver
 #' @importFrom rlang is_missing caller_call current_call
 # This is the internal function of ggplot2 (no-export)
 manual_scale <- function(aesthetic, values = NULL, breaks = waiver(),
@@ -79,4 +79,8 @@ manual_scale <- function(aesthetic, values = NULL, breaks = waiver(),
     palette = pal, breaks = breaks, limits = limits,
     call = call, ...
   )
+}
+
+is_waiver <- function(x){
+  inherits(x, "waiver")
 }
