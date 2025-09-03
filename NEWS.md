@@ -1,5 +1,6 @@
-# ggstar 1.0.4.003
+# ggstar 1.0.5
 
++ add scale_starshape_interactive. (2025-09-03, Wed)
 + add `geom_star_interactive` which can work with `ggiraph`. (2025-08-05, Tue, @aymennasri, #7)
   - <https://github.com/xiangpin/ggstar/issues/7>
 + add new shape (starshape = 32). (2024-04-07, Sun, @brunomioto, #5)
