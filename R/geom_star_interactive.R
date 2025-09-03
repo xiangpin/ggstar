@@ -27,6 +27,7 @@ interactive_geom_parameters <- getFromNamespace("interactive_geom_parameters", "
 interactive_geom_draw_key <- getFromNamespace("interactive_geom_draw_key", "ggiraph")
 IPAR_NAMES <- getFromNamespace("IPAR_NAMES", "ggiraph")
 add_interactive_attrs <- getFromNamespace("add_interactive_attrs", "ggiraph")
+scale_interactive <- getFromNamespace("scale_interactive", "ggiraph")
 
 #' @title ggproto classes for ggiraph
 #' @description 

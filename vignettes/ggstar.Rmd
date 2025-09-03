@@ -92,6 +92,39 @@ p3 <- ggplot(data=mtcars, aes(x=wt, y=mpg)) +
 p3
 ```
 
+## 3.3 interactive
+
+```{r, fig.width=6, fig.height=5, fig.align="center", interactive}
+library(ggiraph)
+library(ggplot2)
+library(ggstar)
+mtcars$name <- rownames(mtcars)
+p4 <- ggplot(
+        data = mtcars, 
+        mapping = aes(
+          x = wt, 
+          y = mpg, 
+          fill = cyl,
+          tooltip = paste0("name: ", name,"\nqsec: ", qsec,"\ndrat: ",drat), 
+          data_id = name
+        )
+      ) +
+      geom_star_interactive(size = 3.5) +
+      scale_fill_viridis_c()
+      
+girafe(
+  ggobj = p4,
+  options = list(
+    opts_hover(css = "fill:yellow;stroke:black;stroke-width:1.5px;"),
+    opts_zoom = opts_zoom(min = .7, max = 4),
+    opts_tooltip(use_fill = TRUE),
+    opts_sizing(width = .7),
+    opts_toolbar = opts_toolbar(saveaspng = FALSE, delay_mouseout = 5000)
+  )
+)
+```
+
+
 # 4. Need helps?
 
 If you have questions/issues, please visit [github issue tracker](https://github.com/xiangpin/ggstar/issues).
