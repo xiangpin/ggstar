@@ -1,3 +1,7 @@
+# ggstar 1.0.6
+
++ add a version dependency on the new `ggiraph`. (2025-09-19, Fri)
+
 # ggstar 1.0.5
 
 + add scale_starshape_interactive. (2025-09-03, Wed)

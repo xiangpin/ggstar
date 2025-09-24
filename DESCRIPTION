@@ -1,6 +1,6 @@
 Package: ggstar
 Title: Multiple Geometric Shape Point Layer for 'ggplot2'
-Version: 1.0.5
+Version: 1.0.6
 Authors@R: 
     person(given = "Shuangbin",
            family = "Xu",
@@ -19,13 +19,13 @@ Imports:
   scales,
   gridExtra,
   cli,
-  rlang
+  rlang,
+  ggiraph (>= 0.9.1)
 Suggests:
   knitr,
   markdown,
   rmarkdown,
   prettydoc,
-  ggiraph,
   purrr
 License: Artistic-2.0
 Encoding: UTF-8
