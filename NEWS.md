@@ -1,3 +1,7 @@
+# ggstar 1.0.6.990
+
++ `default_aes` uses `from_theme` of `ggplot2`. (2025-12-16, Tue, @davidhodge931, #9)
+
 # ggstar 1.0.6
 
 + add a version dependency on the new `ggiraph`. (2025-09-19, Fri)
