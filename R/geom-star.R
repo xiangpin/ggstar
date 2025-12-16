@@ -54,7 +54,7 @@ geom_star <- function(mapping = NULL,
 }
 
 #' GeomStar
-#' @importFrom ggplot2 aes ggproto Geom
+#' @importFrom ggplot2 aes ggproto Geom from_theme
 #' @importFrom grid viewport gpar
 #' @author Shuangbin Xu
 #' @rdname ggstar-ggproto
@@ -66,9 +66,16 @@ GeomStar <- ggproto("GeomStar",
                     required_aes = c("x", "y"),
                     non_missing_aes = c("size", "starshape"),
                     optional_aes = c("subset"), 
-                    default_aes = aes(size = 1.5, colour = "black", starshape=1, 
-                                      angle=0, fill = NA, alpha = 1,  
-                                      phase=0, starstroke=0.5, subset=NULL),
+                    default_aes = aes(size = from_theme(pointsize), 
+                                      colour = from_theme(colour %||% ink), 
+                                      starshape = from_theme(1 %||% pointshape), 
+                                      angle = 0, 
+                                      fill = from_theme(fill %||% NA), 
+                                      alpha = 1,  
+                                      phase = 0, 
+                                      starstroke = from_theme(borderwidth), 
+				      subset=NULL
+                                      ),
                     setup_data = function(data, params){
                         if (is.null(data$subset))
                             return(data)
