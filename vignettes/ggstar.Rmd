@@ -66,7 +66,7 @@ remotes::install_github("xiangpin/ggstar")
 
 # 3. Usage
 
-`geom_star` is similar to `geom_point` of `r CRANpkg("ggplot2")`. The difference point is `geom_star` use `starshape` to mapping the `starshapes`. The another is `geom_star` use `scale_starshape_manual` for manual scale. And the shapes will be not distorted on cartesian coordinates or polar coordinates.
+`geom_star` is similar to `geom_point` of `r CRANpkg("ggplot2")`. The main difference is `geom_star` uses `starshape` to map the `starshapes`. Another is `geom_star` uses `scale_starshape_manual` for manual scaling. The shapes will not be distorted on cartesian coordinates or polar coordinates.
 
 ## 3.1 Cartesian coordinates
 
