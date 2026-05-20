@@ -1,9 +1,8 @@
 # ggstar 1.0.6.990
 
 + reconstruct the parameters of `starGrob`, following the grid 
-  conventions, and export it. (2026-05-20, Wed, @RachBioHaz, #11<https://github.com/xiangpin/ggstar/issues/11>)
- 
-+ `default_aes` uses `from_theme` of `ggplot2`. (2025-12-16, Tue, @davidhodge931, #9<https://github.com/xiangpin/ggstar/issues/9>)
+  conventions, and export it. (2026-05-20, Wed, @RachBioHaz, <https://github.com/xiangpin/ggstar/issues/11>)
++ `default_aes` uses `from_theme` of `ggplot2`. (2025-12-16, Tue, @davidhodge931, <https://github.com/xiangpin/ggstar/issues/9>)
 
 # ggstar 1.0.6
 
@@ -12,12 +11,9 @@
 # ggstar 1.0.5
 
 + add scale_starshape_interactive. (2025-09-03, Wed)
-+ add `geom_star_interactive` which can work with `ggiraph`. (2025-08-05, Tue, @aymennasri, #7)
-  - <https://github.com/xiangpin/ggstar/issues/7>
-+ add new shape (starshape = 32). (2024-04-07, Sun, @brunomioto, #5)
-  - <https://github.com/xiangpin/ggstar/issues/5>
-+ add `semicircle` shape (starshape = 31). (2023-07-26, Wed, @lch14forever, #4)
-  - <https://github.com/xiangpin/ggstar/issues/4>
++ add `geom_star_interactive` which can work with `ggiraph`. (2025-08-05, Tue, @aymennasri, <https://github.com/xiangpin/ggstar/issues/7>)
++ add new shape (starshape = 32). (2024-04-07, Sun, @brunomioto, <https://github.com/xiangpin/ggstar/issues/5>)
++ add `semicircle` shape (starshape = 31). (2023-07-26, Wed, @lch14forever, <https://github.com/xiangpin/ggstar/issues/4>)
 + add `scale_angle_manual`. (2023-07-26, Wed)
 
 # ggstar 1.0.4
