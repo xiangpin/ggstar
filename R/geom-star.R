@@ -93,14 +93,17 @@ GeomStar <- ggproto("GeomStar",
 
                         grobs <- starGrob(x=coords$x,
                                           y=coords$y,
+                                          size = unit(
+                                              (coords$size * .pt +
+                                                   coords$starstroke * .starstroke/2)/5,
+                                              "mm"
+                                          ),
                                           gp=gpar(fill = alpha(coords$fill, coords$alpha),
                                                   col = alpha(coords$colour, coords$alpha),
-                                                  fontsize = (coords$size * .pt + coords$starstroke * .starstroke/2)/5,
                                                   lwd = coords$starstroke * .starstroke / 2),
                                           starshape = coords$starshape,
                                           angle = coords$angle,
-                                          phase = coords$phase,
-                                         )
+                                          phase = coords$phase)
                         ggname("geom_star", grobs)
                     }
             )
