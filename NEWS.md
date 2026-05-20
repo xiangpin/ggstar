@@ -1,6 +1,9 @@
 # ggstar 1.0.6.990
 
-+ `default_aes` uses `from_theme` of `ggplot2`. (2025-12-16, Tue, @davidhodge931, #9)
++ reconstruct the parameters of `starGrob`, following the grid 
+  conventions, and export it. (2026-05-20, Wed, @RachBioHaz, #11<https://github.com/xiangpin/ggstar/issues/11>)
+ 
++ `default_aes` uses `from_theme` of `ggplot2`. (2025-12-16, Tue, @davidhodge931, #9<https://github.com/xiangpin/ggstar/issues/9>)
 
 # ggstar 1.0.6
 
